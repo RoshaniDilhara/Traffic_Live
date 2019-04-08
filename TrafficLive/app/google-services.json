@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "320447358032",
+    "firebase_url": "https://trafficlive-73053.firebaseio.com",
+    "project_id": "trafficlive-73053",
+    "storage_bucket": "trafficlive-73053.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320447358032:android:0a7c370619fa8e90",
+        "android_client_info": {
+          "package_name": "com.example.trafficlive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320447358032-2ja1ffb1580perv4kot05po92l7ro82v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trafficlive",
+            "certificate_hash": "4f50b31a33d9041f1a2992ed9a7275e2e72c48e3"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCmrIJSp-pWLUTdF-pEWWClNbJbNf3BVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320447358032-e1641nhefoiaib95kt42tum07la5br6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
