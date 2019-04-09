@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".BtnnavActivity">
+
+        </activity>
         <activity android:name=".WelcomeActivity">
 
             <intent-filter>
@@ -17,6 +20,12 @@
             </intent-filter>
 
         </activity>
+<<<<<<< HEAD
+=======
+
+
+        <activity android:name=".MainActivity">
+>>>>>>> 97416c03b61671982ab732523e5c8b74523f2f45
 
         <activity
             android:name=".MainActivity">
