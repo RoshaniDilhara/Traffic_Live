@@ -17,7 +17,7 @@ public class BtnnavActivity extends AppCompatActivity {
         BottomNavigationView bottomNav=findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DataEntryFragment()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListner=new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -26,11 +26,11 @@ public class BtnnavActivity extends AppCompatActivity {
             Fragment selectedFragment=null;
 
             switch (menuItem.getItemId()){
-                case R.id.nav_qr:
-                    selectedFragment=new HomeFragment();
+                case R.id.data_entry_bottom:
+                   selectedFragment=new DataEntryFragment();
                      break;
-                case R.id.nav_numplate:
-                    selectedFragment=new FavoritesFragment();
+                case R.id.violation_bottom:
+                    selectedFragment=new ViolationFragment();
                     break;
 
             }
