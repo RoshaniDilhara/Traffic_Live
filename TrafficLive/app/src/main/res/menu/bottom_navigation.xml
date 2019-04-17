@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
    <item
-       android:id="@+id/data_entry_bottom"
+       android:id="@+id/dataEntrty_bottom"
        android:icon="@drawable/ic_system_update_alt_black_bottom"
        android:title="Data Entry" />
 
     <item
-        android:id="@+id/violation_bottom"
+        android:id="@+id/violations_bottom"
         android:icon="@drawable/ic_short_text_black_24dp_bottom"
         android:title="Violations" />
 
