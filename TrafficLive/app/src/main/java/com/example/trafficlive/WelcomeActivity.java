@@ -17,7 +17,7 @@ public class WelcomeActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent mainIntent = new Intent(WelcomeActivity.this, MainActivity.class);
+                Intent mainIntent = new Intent(WelcomeActivity.this, BtnnavActivity.class);
                 startActivity(mainIntent);
                 finish();
             }
