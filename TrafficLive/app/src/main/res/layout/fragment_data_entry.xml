@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
             android:text="QR Scanner"
-            android:background="@color/btcolor"/>
+            android:padding="15dp"
+            android:background="#96eab5"/>
     </LinearLayout>
 
     <Spinner
@@ -60,6 +61,7 @@
         android:layout_height="wrap_content"
         android:text="Recognize Number Plate"
         android:layout_marginTop="150dp"
+        android:padding="15dp"
         android:background="@color/btcolor"/>
 
     <TextView
@@ -74,6 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get Current Location"
+        android:padding="15dp"
         android:layout_marginTop="260dp"
         android:background="@color/btcolor"/>
 
