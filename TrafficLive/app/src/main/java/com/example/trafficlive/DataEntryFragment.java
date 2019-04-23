@@ -1,12 +1,22 @@
 package com.example.trafficlive;
 
 
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +24,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataEntryFragment extends Fragment {
+public class DataEntryFragment extends Fragment implements LocationListener {
+
+    private Button getLocation;
+    private TextView locationText;
+
+    LocationManager locationManager;
+//    private double longitude,latitude;
 
     private static final String TAG = "DataEntryFragment";
 
@@ -106,8 +125,87 @@ public class DataEntryFragment extends Fragment {
             }
         });
 
+        ////////////////  GPS CURRENT LOCATION  ///////////////////
+
+        //super.onCreate(savedInstanceState);
+        //getSupportActionBar().hide();
+        //setContentView(R.layout.fragment_data_entry);
+
+        getLocation = (Button) view.findViewById(R.id.getLocation);
+        locationText = (TextView) view.findViewById(R.id.locationText);
+
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+
+        }
+        
+        getLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getLocation();
+            }
+        });
 
         return view;
     }
 
+//    private ActionBar getSupportActionBar() {
+//    }
+
+
+//    private void setContentView(int fragment_data_entry) {
+//    }
+
+    private void getLocation() {
+        try {
+            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 5, this);
+
+        }catch (SecurityException e){
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+
+        try {
+            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            locationText.setText(locationText.getText() + "\n"+addresses.get(0).getAddressLine(0)+", "+
+                    addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
+        }catch(Exception e)
+        {
+
+        }
+
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(getActivity(), "Please Enable GPS and Internet", Toast.LENGTH_SHORT).show();
+
+//        new AlertDialog.Builder(getContext())
+//                .setTitle("Required GPS Permission")
+//                .setMessage("You have to give this permission to access the feature")
+//                .setPositiveButton("OK")
+
+    }
 }
