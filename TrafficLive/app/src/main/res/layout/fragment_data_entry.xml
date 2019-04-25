@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DataEntryFragment"
+    android:id="@+id/scrollView01"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
     <!--<TextView-->
@@ -80,19 +90,6 @@
         android:layout_marginTop="260dp"
         android:background="@color/btcolor"/>
 
-    <Button
-        android:id="@+id/submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/date"
@@ -108,7 +105,7 @@
             <!--android:layout_marginTop="290dp"-->
             <!--android:text="Enter Time" />-->
 
-    </LinearLayout>
+
 
     <TextView
         android:id="@+id/timer"
@@ -125,4 +122,17 @@
         android:text="Get time"
         android:background="@color/btcolor"/>
 
-</RelativeLayout>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="700dp"
+                android:background="@color/colorPrimaryDark"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
