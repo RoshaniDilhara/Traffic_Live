@@ -7,7 +7,8 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <!--<TextView-->
@@ -34,7 +35,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="55dp"
-            android:text="QR Scanner" />
+            android:text="QR Scanner"
+            android:padding="15dp"
+            android:background="#96eab5"/>
     </LinearLayout>
 
     <Spinner
@@ -57,21 +60,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recognize Number Plate"
-        android:layout_marginTop="150dp"/>
+        android:layout_marginTop="150dp"
+        android:padding="15dp"
+        android:background="@color/btcolor"/>
 
     <TextView
-        android:id="@+id/location"
+        android:id="@+id/locationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Location"
-        android:layout_marginTop="195dp"/>
+        android:layout_marginTop="230dp"/>
 
     <Button
-        android:id="@+id/get_location"
+        android:id="@+id/getLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Location"
-        android:layout_marginTop="225dp"/>
+        android:text="Get Current Location"
+        android:padding="15dp"
+        android:layout_marginTop="260dp"
+        android:background="@color/btcolor"/>
 
     <Button
         android:id="@+id/submit"
@@ -79,7 +86,8 @@
         android:layout_height="wrap_content"
         android:text="SUBMIT"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -90,7 +98,7 @@
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="290dp"
+            android:layout_marginTop="320dp"
             android:text="Enter the Date" />
 
         <!--<TextView-->
@@ -106,14 +114,15 @@
         android:id="@+id/timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="350dp"
         android:text="Select Time" />
 
     <Button
         android:id="@+id/timeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
-        android:text="Get time"/>
+        android:layout_marginTop="370dp"
+        android:text="Get time"
+        android:background="@color/btcolor"/>
 
 </RelativeLayout>
