@@ -21,6 +21,26 @@
             "package_name": "com.example.trafficlive",
             "certificate_hash": "4f50b31a33d9041f1a2992ed9a7275e2e72c48e3"
           }
+        },
+        {
+          "client_id": "320447358032-6rq92k3ebsq0a3tmi8nr59h8ju6bu13t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trafficlive",
+            "certificate_hash": "fa237d89b0a923dc203051aefb3a3983710656bc"
+          }
+        },
+        {
+          "client_id": "320447358032-ugiav3lgpl2jcto3pm860plheubhtoem.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trafficlive",
+            "certificate_hash": "983b09ac27914a16b9f37767bfa55aa90ac74b32"
+          }
+        },
+        {
+          "client_id": "320447358032-e1641nhefoiaib95kt42tum07la5br6b.apps.googleusercontent.com",
+          "client_type": 3
         }
       ],
       "api_key": [
