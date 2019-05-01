@@ -110,6 +110,8 @@ LoginActivity extends AppCompatActivity {
                     loginProgress.setVisibility(View.VISIBLE);
                     btnLogin.setVisibility(View.VISIBLE);
                     updateUI();//start profile activity
+
+
                 } else {
                     showMessage(task.getException().getMessage());
                     btnLogin.setVisibility(View.VISIBLE);
