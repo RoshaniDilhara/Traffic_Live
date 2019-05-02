@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:name=".TrafficLive"
@@ -38,8 +39,16 @@
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+<<<<<<< HEAD
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+=======
 
 
+>>>>>>> d282520baf77af2f52bafa599b872eec821c2e4c
         </activity>
 
         <activity
@@ -47,12 +56,12 @@
             android:label="@string/title_activity_main2"
             android:theme="@style/AppTheme.NoActionBar">
 
-             <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
+             <!--<intent-filter>-->
+             <!--<action android:name="android.intent.action.MAIN" />-->
 
 
-             <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+             <!--<category android:name="android.intent.category.LAUNCHER" />-->
+             <!--</intent-filter>-->
         </activity>
         <activity android:name=".MainActivity" />
     </application>
