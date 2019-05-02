@@ -123,15 +123,26 @@
         android:background="@color/btcolor"/>
 
 
+            <!--<Button-->
+                <!--android:id="@+id/submit"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="SUBMIT"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginTop="700dp"-->
+                <!--android:background="@color/colorPrimaryDark"/>-->
+
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SUBMIT"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="700dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:layout_marginTop="700dp"/>
 
         </RelativeLayout>
     </LinearLayout>

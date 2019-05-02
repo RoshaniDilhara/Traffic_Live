@@ -1,0 +1,56 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 501 ciObject found
+ciMethod java/lang/Object <init> ()V 4097 1 15405601 0 0
+ciMethod java/lang/Object hashCode ()I 2049 1 256 0 -1
+ciMethod java/lang/Object equals (Ljava/lang/Object;)Z 2057 1 40176 0 64
+ciMethod java/lang/Comparable compareTo (Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/lang/System identityHashCode (Ljava/lang/Object;)I 2049 1 256 0 -1
+ciMethod java/util/Map size ()I 0 0 1 0 -1
+ciMethod java/util/Map get (Ljava/lang/Object;)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/lang/Integer rotateLeft (II)I 4097 1 265615 0 0
+ciMethod java/util/Comparator compare (Ljava/lang/Object;Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/util/Collection iterator ()Ljava/util/Iterator; 0 0 1 0 -1
+ciMethod java/util/Collection toArray ()[Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/List size ()I 0 0 1 0 -1
+ciMethod java/util/List iterator ()Ljava/util/Iterator; 0 0 1 0 -1
+ciMethod java/util/List add (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/List get (I)Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/List indexOf (Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/util/AbstractCollection <init> ()V 489 1 3097651 0 32
+ciMethod java/util/AbstractCollection size ()I 0 0 1 0 -1
+ciMethod java/util/AbstractCollection isEmpty ()Z 2241 1 243894 0 64
+ciMethod java/util/AbstractCollection add (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/AbstractCollection addAll (Ljava/util/Collection;)Z 2057 20953 2318 0 224
+ciMethod java/util/ArrayList indexOf (Ljava/lang/Object;)I 1025 21569 5250 0 224
+ciMethod java/util/ArrayList elementData (I)Ljava/lang/Object; 2145 1 165231 0 96
+ciMethod java/util/ArrayList get (I)Ljava/lang/Object; 2145 1 83696 0 128
+ciMethod java/util/ArrayList rangeCheck (I)V 2145 1 165529 0 64
+ciMethod java/util/ArrayList iterator ()Ljava/util/Iterator; 3073 1 175496 0 160
+ciMethod java/util/ArrayList access$000 (Ljava/util/ArrayList;)I 1033 1 129 0 0
+ciMethod java/util/Set contains (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/Set iterator ()Ljava/util/Iterator; 0 0 1 0 -1
+ciMethod java/util/Set add (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/Set remove (Ljava/lang/Object;)Z 0 0 1 0 -1
+ciMethod java/util/Set addAll (Ljava/util/Collection;)Z 0 0 1 0 -1
+ciMethod java/util/AbstractSet <init> ()V 57 1 580114 0 32
+ciMethod java/util/AbstractMap <init> ()V 553 1 1370424 0 32
+ciMethod java/util/HashMap hash (Ljava/lang/Object;)I 2105 1 624700 0 160
+ciMethod java/util/HashMap comparableClassFor (Ljava/lang/Object;)Ljava/lang/Class; 45785 1 5723 0 -1
+ciMethod java/util/HashMap compareComparables (Ljava/lang/Class;Ljava/lang/Object;Ljava/lang/Object;)I 0 0 1 0 -1
+ciMethod java/util/HashMap <init> ()V 225 1 1112750 0 32
+ciMethod java/util/HashMap size ()I 1025 1 128 0 0
+ciMethod java/util/HashMap getNode (ILjava/lang/Object;)Ljava/util/HashMap$Node; 2986489 133121 912356 0 416
+ciMethod java/util/HashMap containsKey (Ljava/lang/Object;)Z 9206993 1 1160575 0 0
+ciMethod java/util/HashMap put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; 4430529 1 594194 0 -1
+ciMethod java/util/HashMap remove (Ljava/lang/Object;)Ljava/lang/Object; 3097 1 6809 0 -1
+ciMethod java/util/HashMap keySet ()Ljava/util/Set; 3073 1 25172 0 0
+ciMethod java/lang/Math min (II)I 3073 1 962365 0 -1
+ciMethod java/util/Objects requireNonNull (Ljava/lang/Object;)Ljava/lang/Object; 2297 1 1793731 0 -1
+ciMethod java/util/Iterator hasNext ()Z 0 0 1 0 -1
+ciMethod java/util/Iterator next ()Ljava/lang/Object; 0 0 1 0 -1
+ciMethod java/util/Arrays fill ([Ljava/lang/Object;IILjava/lang/Object;)V 2057 1097 19715 0 -1
+ciMethod java/util/Arrays copyOf ([Ljava/lang/Object;I)[Ljava/lang/Object; 2049 1 46001 0 -1
+ciMethod java/util/LinkedHashMap keySet ()Ljava/util/Set; 2201 1 7542 0 0
+ciMethodData java/lang/Object <init> ()V 2 15405603 orig 264 56 173 208 108 0 0 0 0 128 4 202 21 0 0 0 0 32 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 77 68 79 
