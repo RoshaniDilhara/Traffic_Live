@@ -20,85 +20,87 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="Data Entry"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--/>-->
+            <!-- TODO: Update blank fragment layout -->
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="Data Entry"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--/>-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/link"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/licence_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:text="License Details" />
+                <TextView
+                    android:id="@+id/licence_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:text="License Details" />
 
-        <Button
-            android:id="@+id/scan_qr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:text="QR Scanner"
-            android:padding="15dp"
-            android:background="#96eab5"/>
-    </LinearLayout>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"/>
+                <Button
+                    android:id="@+id/scan_qr"
+                    android:layout_width="wrap_content"
 
 
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="55dp"
+                    android:background="#96eab5"
+                    android:padding="15dp"
+                    android:text="QR Scanner" />
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/numPlate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number Plate"
-        android:layout_marginTop="125dp"/>
-
-    <Button
-        android:id="@+id/rec_numPlate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recognize Number Plate"
-        android:layout_marginTop="150dp"
-        android:padding="15dp"
-        android:background="@color/btcolor"/>
-
-    <TextView
-        android:id="@+id/locationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Location"
-        android:layout_marginTop="230dp"/>
-
-    <Button
-        android:id="@+id/getLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Current Location"
-        android:padding="15dp"
-        android:layout_marginTop="260dp"
-        android:background="@color/btcolor"/>
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp" />
 
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="320dp"
-            android:text="Enter the Date" />
+            <TextView
+                android:id="@+id/numPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="125dp"
+                android:text="Number Plate" />
 
-        <!--<TextView-->
+            <Button
+                android:id="@+id/rec_numPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:background="@color/btcolor"
+                android:padding="15dp"
+                android:text="Recognize Number Plate" />
+
+            <TextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="230dp"
+                android:text="Location" />
+
+            <Button
+                android:id="@+id/getLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="260dp"
+                android:background="@color/btcolor"
+                android:padding="15dp"
+                android:text="Get Current Location" />
+
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="320dp"
+                android:text="Enter the Date" />
+
+            <!--<TextView-->
             <!--android:id="@+id/time"-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
@@ -106,32 +108,31 @@
             <!--android:text="Enter Time" />-->
 
 
+            <TextView
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="350dp"
+                android:text="Select Time" />
 
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="350dp"
-        android:text="Select Time" />
-
-    <Button
-        android:id="@+id/timeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="370dp"
-        android:text="Get time"
-        android:background="@color/btcolor"/>
+            <Button
+                android:id="@+id/timeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="370dp"
+                android:background="@color/btcolor"
+                android:text="Get time" />
 
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SUBMIT"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="700dp"
-                android:background="@color/colorPrimaryDark"/>
+                android:background="@color/colorPrimaryDark"
+                android:text="SUBMIT" />
 
         </RelativeLayout>
     </LinearLayout>

@@ -1,16 +1,21 @@
 package com.example.trafficlive;
 
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,6 +41,7 @@ public class QRActivity extends AppCompatActivity {
     CameraView cameraView;
     Button btnDetect;
     AlertDialog waitingDialog;
+    private static FragmentManager fragmentManager;
 
     protected void onResume(){
         super.onResume();
@@ -50,9 +56,14 @@ public class QRActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+
+        fragmentManager = getSupportFragmentManager();
 
         cameraView=(CameraView)findViewById(R.id.cameraview);
         btnDetect=(Button)findViewById(R.id.btn_detect);
@@ -116,6 +127,10 @@ public class QRActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(QRActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+
+
+
+
                     }
                 });
     }
@@ -126,17 +141,51 @@ public class QRActivity extends AppCompatActivity {
             switch (value_type){
                 case FirebaseVisionBarcode.TYPE_TEXT:
                 {
+
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("QRActivity", item.getRawValue());
+// set Fragmentclass Arguments
+                    DataEntryFragment fragobj = new DataEntryFragment();
+                    fragobj.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.cameraview,fragobj).commit();
+                    //fragmentManager.executePendingTransactions();
+
+                        //this.getSupportFragmentManager().executePendingTransactions();
+
+                    //setContentView(R.layout.line);
+                    /*
                     android.support.v7.app.AlertDialog.Builder  builder=new android.support.v7.app.AlertDialog.Builder(this);
                     builder.setMessage(item.getRawValue());
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
+                            //dialogInterface.dismiss();
                         }
                     });
                     android.support.v7.app.AlertDialog dialog=builder.create();
-                    dialog.show();
 
+                    dialog.show();
+                    */
+
+                    //
+                    // FragmentManager fm=getFragmentManager().beginTransaction();
+
+
+                                                     //DataEntryFragment fragment=new DataEntryFragment();
+                    //FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                   //transaction.replace(R.id.licence_details,fragment,"DataEntryFragment");
+                    //transaction.commit();
+                     //DataEntryFragment fragment=(DataEntryFragment) getActivity().getFragmentManager().findFragmentByTag("DataEntryFragment");
+                 // TextView scanResults = (TextView) findViewById(R.id.licence_details);
+
+                    //scanResults.setText(QRActivity.this.toString());
+//
+                         //fragment.scanResults.setText(QRActivity.this.toString());
+
+                   // FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                    //transaction.commit();
+                                                 //fragmentManager.beginTransaction().replace(R.id.licence_details,fragment,"DataEntryFragment").commit();
                 }
                 break;
 

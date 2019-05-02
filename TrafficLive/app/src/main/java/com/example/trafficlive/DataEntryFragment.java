@@ -49,6 +49,9 @@ public class DataEntryFragment extends Fragment implements LocationListener {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    TextView scanResults;
+
+
 
 
     public DataEntryFragment() {
@@ -68,8 +71,16 @@ public class DataEntryFragment extends Fragment implements LocationListener {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), QRActivity.class);
                 startActivity(intent);
+               // TextView qrView = (TextView) view.findViewById(R.id.licence_details);
+                //qrView.setText(QRActivity.this.toString());
+
+
             }
         });
+
+        String strtext = getArguments().getString("QRActivity");
+        scanResults=view.findViewById(R.id.licence_details);
+        scanResults.setText(strtext);
 
         Button rec_numPlate = (Button) view.findViewById(R.id.rec_numPlate);
         rec_numPlate.setOnClickListener(new View.OnClickListener() {
@@ -209,4 +220,8 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 //                .setPositiveButton("OK")
 
     }
+
+
+
+
 }
