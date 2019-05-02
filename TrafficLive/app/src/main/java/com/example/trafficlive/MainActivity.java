@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText userEmail,userPassword,userPassword2,userName;
     private ProgressBar loadingProgress;
     private Button regBtn;
-    private TextView textViewSignin;
 
     private ProgressDialog progressDialog;
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         userName = findViewById(R.id.regName);
         loadingProgress = findViewById(R.id.regProgressBar);
         regBtn = findViewById(R.id.regBtn);
-        textViewSignin = (TextView) findViewById(R.id.textViewSignin);
+        TextView textViewSignin = (TextView) findViewById(R.id.textViewSignin);
         loadingProgress.setVisibility(View.VISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
@@ -105,17 +104,18 @@ public class MainActivity extends AppCompatActivity {
                     //we need to display an error message
                     showMessage("Please verify all fields");
                     regBtn.setVisibility(View.VISIBLE);
-                    loadingProgress.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
 
                 }else if(!password.equals(password2)){
                     showMessage("Please confirm your password");
                     regBtn.setVisibility(View.VISIBLE);
-                    loadingProgress.setVisibility(View.VISIBLE);
+                    loadingProgress.setVisibility(View.INVISIBLE);
                 }
                 else{
                     //everything is ok and all fields are filled now we can start creating user account
                     //CreateUserAccount method will try to create the use if the email is valid
-
+                    progressDialog.setMessage("Registering user...");
+                    progressDialog.show();
                     CreateUserAccount(email,name,password);
                    // progressDialog.setMessage("Registering user...");
                    // progressDialog.show();
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
                     //will open login activity here
 
                 }
+                progressDialog.dismiss();
+
             }
         });
 
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                             //account created failed
                             showMessage("Could not register.Please try again." + task.getException().getMessage());
                             regBtn.setVisibility(View.VISIBLE);
-                            loadingProgress.setVisibility(View.VISIBLE);
+                            loadingProgress.setVisibility(View.INVISIBLE);
                         }
                         progressDialog.dismiss();
                     }
@@ -219,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent2 = new Intent(getApplicationContext(),LoginActivity.class);
         startActivity(intent2);
-        finish();
+        //finish();
     }
 
     //simple method to show toast message
