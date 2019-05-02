@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +28,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -63,6 +65,9 @@ public class DataEntryFragment extends Fragment implements LocationListener {
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
 
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     public DataEntryFragment() {
         // Required empty public constructor
@@ -79,6 +84,21 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                if (firebaseAuth.getCurrentUser() == null){
+
+                    Intent loginIntent = new Intent(getActivity(),LoginActivity.class);
+                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(loginIntent);
+                }
+
+            }
+        };
 
         mLicenceDetails = (TextView) view.findViewById(R.id.licence_details);
         mNumPlate = (TextView) view.findViewById(R.id.numPlate);
@@ -216,13 +236,16 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
       //  }
 
-
-
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+        mAuth.addAuthStateListener(mAuthListener);
+    }
 
-//    private ActionBar getSupportActionBar() {
+    //    private ActionBar getSupportActionBar() {
 //    }
 
 //    private void setContentView(int fragment_data_entry) {
