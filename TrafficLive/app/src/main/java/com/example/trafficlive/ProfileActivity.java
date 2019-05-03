@@ -30,14 +30,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             finish();
             startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
         }
-//
+
         FirebaseUser user = mAuth.getCurrentUser();
-//
-//       /* if(mAuth.getCurrentUser() != null){
-//            //profile activity here
-//            finish();
-//            startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-//        }*/
 
         getlogin =(Button) findViewById(R.id.getlogin);
         getlogin.setOnClickListener(this);
@@ -63,40 +57,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             savebtn.setVisibility(View.GONE);
             getlogin.setVisibility(View.GONE);
-//            FragmentManager fm = getSupportFragmentManager();
-//            DataEntryFragment fragment =new DataEntryFragment();
-//            fm.beginTransaction().replace(R.id.container,fragment).commit();
-
             Intent intent7 = new Intent(ProfileActivity.this, BtnnavActivity.class);
             startActivity(intent7);
             finish();
 
 
-//            Intent intent5 = new Intent(this, DataEntryFragment.class);
-//            startActivity(intent5);
-//            finish();
+
         }
     }
-
-//    @Override
-//    public void onClick(View view){
-//
-//        if(view == savebtn){
-//            mAuth.signOut() ;
-//
-//            savebtn.setVisibility(View.GONE);
-//            getlogin.setVisibility(View.GONE);
-//            FragmentManager fm = getSupportFragmentManager();
-//            DataEntryFragment fragment =new DataEntryFragment();
-//            fm.beginTransaction().replace(R.id.container,fragment).commit();
-//
-////            Intent intent5 = new Intent(this, DataEntryFragment.class);
-////            startActivity(intent5);
-////            finish();
-//        }
-//
-//    }
-
-
-
 }
