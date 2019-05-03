@@ -15,7 +15,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -23,12 +22,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -43,7 +44,8 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataEntryFragment extends Fragment implements LocationListener {
+public class DataEntryFragment extends Fragment implements LocationListener, AdapterView.OnItemSelectedListener {
+
 
     private Button getLocation;
     private TextView locationText;
@@ -61,12 +63,11 @@ public class DataEntryFragment extends Fragment implements LocationListener {
     private TextView mDate;
     private TextView mTime;
     private Button mSubmitBtn;
+    private Spinner mspinner;
 
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
 
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     public DataEntryFragment() {
@@ -84,27 +85,14 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
-        mAuth = FirebaseAuth.getInstance();
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-
-                if (firebaseAuth.getCurrentUser() == null){
-
-                    Intent loginIntent = new Intent(getActivity(),LoginActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(loginIntent);
-                }
-
-            }
-        };
 
         mLicenceDetails = (TextView) view.findViewById(R.id.licence_details);
         mNumPlate = (TextView) view.findViewById(R.id.numPlate);
         mLocation = (TextView) view.findViewById(R.id.locationText);
         mDate = (TextView) view.findViewById(R.id.date);
         mTime = (TextView) view.findViewById(R.id.timer);
+        mspinner = (Spinner) view.findViewById(R.id.spinner);
 
         mSubmitBtn = (Button) view.findViewById(R.id.submit);
 
@@ -123,6 +111,15 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
         ////////////////////////////////////////////
 
+        ///////////spinner///////////
+
+        mspinner = view.findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.violation_accident, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mspinner.setAdapter(adapter);
+        mspinner.setOnItemSelectedListener(this);
+
+        /////////////////////////////
 
         Button scan_qr = (Button) view.findViewById(R.id.scan_qr);
         scan_qr.setOnClickListener(new View.OnClickListener() {
@@ -220,6 +217,7 @@ public class DataEntryFragment extends Fragment implements LocationListener {
         String LocationVal = mLocation.getText().toString().trim();
         String DateVal = mDate.getText().toString().trim();
         String TimeVal = mTime.getText().toString().trim();
+        String SpinnerVal = mspinner.getSelectedItem().toString().trim();
 
 
 //        if (!TextUtils.isEmpty(test)){
@@ -231,6 +229,8 @@ public class DataEntryFragment extends Fragment implements LocationListener {
             newPost.child("Location").setValue(LocationVal);
             newPost.child("Date").setValue(DateVal);
             newPost.child("Time").setValue(TimeVal);
+            newPost.child("Violation or Accident").setValue(SpinnerVal);
+
 
 
 
@@ -238,12 +238,7 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        mAuth.addAuthStateListener(mAuthListener);
-    }
 
     //    private ActionBar getSupportActionBar() {
 //    }
@@ -300,6 +295,19 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 //                .setTitle("Required GPS Permission")
 //                .setMessage("You have to give this permission to access the feature")
 //                .setPositiveButton("OK")
+
+    }
+
+
+    //spinner
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    //spinner
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 
