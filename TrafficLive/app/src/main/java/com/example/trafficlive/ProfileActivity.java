@@ -63,9 +63,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
             savebtn.setVisibility(View.GONE);
             getlogin.setVisibility(View.GONE);
-            FragmentManager fm = getSupportFragmentManager();
-            DataEntryFragment fragment =new DataEntryFragment();
-            fm.beginTransaction().replace(R.id.container,fragment).commit();
+//            FragmentManager fm = getSupportFragmentManager();
+//            DataEntryFragment fragment =new DataEntryFragment();
+//            fm.beginTransaction().replace(R.id.container,fragment).commit();
+
+            Intent intent7 = new Intent(ProfileActivity.this, BtnnavActivity.class);
+            startActivity(intent7);
+            finish();
+
 
 //            Intent intent5 = new Intent(this, DataEntryFragment.class);
 //            startActivity(intent5);
