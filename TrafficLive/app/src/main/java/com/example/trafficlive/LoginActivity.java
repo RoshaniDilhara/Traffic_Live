@@ -48,7 +48,7 @@ LoginActivity extends AppCompatActivity {
         loginProgress = findViewById(R.id.login_progress);
         mAuth = FirebaseAuth.getInstance();
         textViewSignUp = findViewById(R.id.textViewSignUp);
-        ProfileActivity =  new Intent(this, com.example.trafficlive.ProfileActivity.class);
+       // ProfileActivity =  new Intent(this, com.example.trafficlive.ProfileActivity.class);
         loginPhoto = findViewById(R.id.login_photo);
 
         progressDialog = new ProgressDialog(this);
@@ -110,6 +110,8 @@ LoginActivity extends AppCompatActivity {
                     loginProgress.setVisibility(View.VISIBLE);
                     btnLogin.setVisibility(View.VISIBLE);
                     updateUI();//start profile activity
+
+
                 } else {
                     showMessage(task.getException().getMessage());
                     btnLogin.setVisibility(View.VISIBLE);
@@ -122,7 +124,8 @@ LoginActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        startActivity(ProfileActivity);
+        Intent intent5 = new Intent(this, ProfileActivity.class);
+        startActivity(intent5);
         finish();
         //startActivity(new Intent (getApplicationContext(),ProfileActivity.class));
         //finish();

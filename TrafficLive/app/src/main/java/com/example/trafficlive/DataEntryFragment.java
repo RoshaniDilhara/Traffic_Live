@@ -27,6 +27,11 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -42,16 +47,23 @@ public class DataEntryFragment extends Fragment implements LocationListener {
     private TextView locationText;
 
     LocationManager locationManager;
-//    private double longitude,latitude;
 
     private static final String TAG = "DataEntryFragment";
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
-    TextView scanResults;
+    //TextView scanResults;
 
+    private TextView mLicenceDetails;
+    private TextView mNumPlate;
+    private TextView mLocation;
+    private TextView mDate;
+    private TextView mTime;
+    private Button mSubmitBtn;
 
+    private StorageReference mStorage;
+    private DatabaseReference mDatabase;
 
 
     public DataEntryFragment() {
@@ -65,7 +77,37 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
         final View view = inflater.inflate(R.layout.fragment_data_entry, container, false);
 
+        ///////////////sending data/////////////////
+
+        mStorage = FirebaseStorage.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
+
+        mLicenceDetails = (TextView) view.findViewById(R.id.licence_details);
+        mNumPlate = (TextView) view.findViewById(R.id.numPlate);
+        mLocation = (TextView) view.findViewById(R.id.locationText);
+        mDate = (TextView) view.findViewById(R.id.date);
+        mTime = (TextView) view.findViewById(R.id.timer);
+
+        mSubmitBtn = (Button) view.findViewById(R.id.submit);
+
+
+
+
+        mSubmitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view1) {
+
+                startPosting();
+
+            }
+        });
+
+
+        ////////////////////////////////////////////
+
+
         Button scan_qr = (Button) view.findViewById(R.id.scan_qr);
+
         scan_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,14 +115,18 @@ public class DataEntryFragment extends Fragment implements LocationListener {
                 startActivity(intent);
                // TextView qrView = (TextView) view.findViewById(R.id.licence_details);
                 //qrView.setText(QRActivity.this.toString());
+                //String strtext = getArguments().getString("QRActivity");
+                //mLicenceDetails.setText(strtext);
+                //readBundle(getArguments());
 
 
             }
+
         });
 
-        String strtext = getArguments().getString("QRActivity");
-        scanResults=view.findViewById(R.id.licence_details);
-        scanResults.setText(strtext);
+        readBundle(getArguments());
+            //String strtext = getArguments().getString("QRActivity");
+            //mLicenceDetails.setText(strtext);
 
         Button rec_numPlate = (Button) view.findViewById(R.id.rec_numPlate);
         rec_numPlate.setOnClickListener(new View.OnClickListener() {
@@ -162,9 +208,47 @@ public class DataEntryFragment extends Fragment implements LocationListener {
         return view;
     }
 
+
+    private void readBundle(Bundle bundle) {
+        if (bundle != null) {
+
+            String strtext = bundle.getString("QRActivity");
+            mLicenceDetails.setText(strtext);
+
+        }
+    }
+
+    private void startPosting() {
+
+        String LicenceDetVal = mLicenceDetails.getText().toString().trim();
+        String NumPlateVal = mNumPlate.getText().toString().trim();
+        String LocationVal = mLocation.getText().toString().trim();
+        String DateVal = mDate.getText().toString().trim();
+        String TimeVal = mTime.getText().toString().trim();
+
+
+//        if (!TextUtils.isEmpty(test)){
+
+            DatabaseReference newPost = mDatabase.push();
+
+            newPost.child("Licence Details").setValue(LicenceDetVal);
+            newPost.child("Number Plate").setValue(NumPlateVal);
+            newPost.child("Location").setValue(LocationVal);
+            newPost.child("Date").setValue(DateVal);
+            newPost.child("Time").setValue(TimeVal);
+
+
+
+      //  }
+
+
+
+    }
+
+
+
 //    private ActionBar getSupportActionBar() {
 //    }
-
 
 //    private void setContentView(int fragment_data_entry) {
 //    }
@@ -221,7 +305,5 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
     }
 
-
-
-
 }
+

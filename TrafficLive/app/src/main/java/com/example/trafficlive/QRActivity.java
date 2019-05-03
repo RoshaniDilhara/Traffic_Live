@@ -63,7 +63,7 @@ public class QRActivity extends AppCompatActivity {
 
 
 
-        fragmentManager = getSupportFragmentManager();
+
 
         cameraView=(CameraView)findViewById(R.id.cameraview);
         btnDetect=(Button)findViewById(R.id.btn_detect);
@@ -141,14 +141,18 @@ public class QRActivity extends AppCompatActivity {
             switch (value_type){
                 case FirebaseVisionBarcode.TYPE_TEXT:
                 {
-
-
+                    //btnDetect.setVisibility(View.GONE);
+                   // fragmentManager = getSupportFragmentManager();
                     Bundle bundle = new Bundle();
                     bundle.putString("QRActivity", item.getRawValue());
 // set Fragmentclass Arguments
                     DataEntryFragment fragobj = new DataEntryFragment();
                     fragobj.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.cameraview,fragobj).commit();
+
+
+
+
                     //fragmentManager.executePendingTransactions();
 
                         //this.getSupportFragmentManager().executePendingTransactions();

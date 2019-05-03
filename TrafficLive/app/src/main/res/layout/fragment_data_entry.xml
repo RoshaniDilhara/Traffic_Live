@@ -29,7 +29,6 @@
             <!--/>-->
 
             <LinearLayout
-                android:id="@+id/link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -124,15 +123,34 @@
                 android:text="Get time" />
 
 
+            <!--<Button-->
+                <!--android:id="@+id/submit"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="SUBMIT"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginTop="700dp"-->
+                <!--android:background="@color/colorPrimaryDark"/>-->
+
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="700dp"
                 android:background="@color/colorPrimaryDark"
                 android:text="SUBMIT" />
+
+                android:text="SUBMIT"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="700dp"/>
+
 
         </RelativeLayout>
     </LinearLayout>
