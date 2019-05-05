@@ -27,6 +27,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -47,10 +49,16 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private DatabaseReference mDatabase;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
         progressDialog = new ProgressDialog(this);
 
@@ -143,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void CreateUserAccount(String email, final String name, String password) {
+    private void CreateUserAccount(final String email, final String name, String password) {
 
         //this method create user account with specific email and password
 
@@ -159,6 +167,12 @@ public class MainActivity extends AppCompatActivity {
                             //after we created user account we need to update his profile picture and name
                             updateUserInfo(name ,pickedImgUri,mAuth.getCurrentUser());
                             ///////////intent for profile activity
+
+                            String user_id = mAuth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = mDatabase.child(user_id);
+                            current_user_db.child("Name").setValue(name);
+                            current_user_db.child("E-mail").setValue(email);
+
                         }
                         else
                         {

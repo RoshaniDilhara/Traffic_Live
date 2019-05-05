@@ -68,6 +68,9 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
 
+//    private FirebaseAuth mAuth;
+//    private FirebaseAuth.AuthStateListener mAuthListener;
+
 
 
     public DataEntryFragment() {
@@ -85,6 +88,23 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
+
+
+//        mAuth = FirebaseAuth.getInstance();
+//        mAuthListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//
+//                if (firebaseAuth.getCurrentUser() == null){
+//
+//                    Intent registerIntent = new Intent(getActivity(),LoginActivity.class);
+//                    registerIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(registerIntent);
+//
+//                }
+//
+//            }
+//        };
 
 
         mLicenceDetails = (TextView) view.findViewById(R.id.licence_details);
@@ -224,12 +244,12 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
             DatabaseReference newPost = mDatabase.push();
 
-            newPost.child("Licence Details").setValue(LicenceDetVal);
-            newPost.child("Number Plate").setValue(NumPlateVal);
+            newPost.child("LicenceDetails").setValue(LicenceDetVal);
+            newPost.child("NumberPlate").setValue(NumPlateVal);
             newPost.child("Location").setValue(LocationVal);
             newPost.child("Date").setValue(DateVal);
             newPost.child("Time").setValue(TimeVal);
-            newPost.child("Violation or Accident").setValue(SpinnerVal);
+            newPost.child("ViolationOrAccident").setValue(SpinnerVal);
 
 
 
@@ -310,6 +330,13 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        mAuth.addAuthStateListener(mAuthListener);
+//    }
 
 
 }
