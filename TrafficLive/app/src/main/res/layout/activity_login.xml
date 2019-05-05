@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:background="#fff">
+    android:background="@drawable/login_bg_style"
+    >
 
     <ImageView
         android:id="@+id/login_photo"
@@ -87,7 +88,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/loginBtn"
         app:layout_constraintEnd_toEndOf="@+id/loginBtn"
         app:layout_constraintStart_toStartOf="@+id/loginBtn"
-        app:layout_constraintTop_toTopOf="@+id/loginBtn" />
+        app:layout_constraintTop_toTopOf="@+id/loginBtn"
+        android:indeterminateTint="@color/colorAccent"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="visible"/>
 
 
     <TextView
@@ -99,7 +103,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_progress" />
+        app:layout_constraintTop_toBottomOf="@+id/login_progress"
+        android:textColor="#000"/>
 
     
 </android.support.constraint.ConstraintLayout>

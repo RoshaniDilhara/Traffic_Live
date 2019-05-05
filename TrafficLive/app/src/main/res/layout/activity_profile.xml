@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_bg_style"
     android:id="@+id/container"
     tools:context=".ProfileActivity">
 
@@ -17,7 +18,9 @@
         android:layout_marginBottom="199dp"
         android:text="Start Reporting Violation"
         tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="237dp" />
+        tools:layout_editor_absoluteY="237dp"
+        android:background="@drawable/two_btn_style"
+        android:textColor="#fff"/>
 
 
     <Button
@@ -26,8 +29,10 @@
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="387dp"
-        android:text="Now Login to the system" />
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="338dp"
+        android:text="Now Login to the system"
+        android:background="@drawable/two_btn_style"
+        android:textColor="#fff"/>
 
 </RelativeLayout>
