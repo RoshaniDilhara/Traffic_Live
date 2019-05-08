@@ -14,7 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -141,15 +143,23 @@ public class QRActivity extends AppCompatActivity {
             switch (value_type){
                 case FirebaseVisionBarcode.TYPE_TEXT:
                 {
-                    //btnDetect.setVisibility(View.GONE);
-                   // fragmentManager = getSupportFragmentManager();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("QRActivity", item.getRawValue());
-// set Fragmentclass Arguments
-                    DataEntryFragment fragobj = new DataEntryFragment();
-                    fragobj.setArguments(bundle);
-                    getSupportFragmentManager().beginTransaction().replace(R.id.cameraview,fragobj).commit();
 
+
+                        btnDetect.setVisibility(View.GONE);
+                    RelativeLayout f1 = (RelativeLayout) findViewById(R.id.container);
+
+                        f1.removeAllViews();
+
+                    //cameraView.setVisibility(View.GONE);
+                        // fragmentManager = getSupportFragmentManager();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("QRActivity", item.getRawValue());
+// set Fragmentclass Arguments
+                        DataEntryFragment fragobj = new DataEntryFragment();
+                        fragobj.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragobj).addToBackStack(null).commit();
+
+                        //fragmentManager.popBackStack();
 
 
 
@@ -157,7 +167,7 @@ public class QRActivity extends AppCompatActivity {
 
                         //this.getSupportFragmentManager().executePendingTransactions();
 
-                    //setContentView(R.layout.line);
+
                     /*
                     android.support.v7.app.AlertDialog.Builder  builder=new android.support.v7.app.AlertDialog.Builder(this);
                     builder.setMessage(item.getRawValue());
@@ -172,24 +182,10 @@ public class QRActivity extends AppCompatActivity {
                     dialog.show();
                     */
 
-                    //
-                    // FragmentManager fm=getFragmentManager().beginTransaction();
 
 
-                                                     //DataEntryFragment fragment=new DataEntryFragment();
-                    //FragmentTransaction transaction=getFragmentManager().beginTransaction();
-                   //transaction.replace(R.id.licence_details,fragment,"DataEntryFragment");
-                    //transaction.commit();
-                     //DataEntryFragment fragment=(DataEntryFragment) getActivity().getFragmentManager().findFragmentByTag("DataEntryFragment");
-                 // TextView scanResults = (TextView) findViewById(R.id.licence_details);
 
-                    //scanResults.setText(QRActivity.this.toString());
-//
-                         //fragment.scanResults.setText(QRActivity.this.toString());
 
-                   // FragmentTransaction transaction=getFragmentManager().beginTransaction();
-                    //transaction.commit();
-                                                 //fragmentManager.beginTransaction().replace(R.id.licence_details,fragment,"DataEntryFragment").commit();
                 }
                 break;
 

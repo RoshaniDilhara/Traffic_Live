@@ -22,8 +22,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +44,8 @@ import java.util.Locale;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DataEntryFragment extends Fragment implements LocationListener {
+public class DataEntryFragment extends Fragment implements LocationListener, AdapterView.OnItemSelectedListener {
+
 
     private Button getLocation;
     private TextView locationText;
@@ -61,9 +65,11 @@ public class DataEntryFragment extends Fragment implements LocationListener {
     private TextView mDate;
     private TextView mTime;
     private Button mSubmitBtn;
+    private Spinner mspinner;
 
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
+
 
 
     public DataEntryFragment() {
@@ -82,11 +88,13 @@ public class DataEntryFragment extends Fragment implements LocationListener {
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
 
+
         mLicenceDetails = (TextView) view.findViewById(R.id.licence_details);
         mNumPlate = (TextView) view.findViewById(R.id.numPlate);
         mLocation = (TextView) view.findViewById(R.id.locationText);
         mDate = (TextView) view.findViewById(R.id.date);
         mTime = (TextView) view.findViewById(R.id.timer);
+        mspinner = (Spinner) view.findViewById(R.id.spinner);
 
         mSubmitBtn = (Button) view.findViewById(R.id.submit);
 
@@ -105,6 +113,15 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 
         ////////////////////////////////////////////
 
+        ///////////spinner///////////
+
+        mspinner = view.findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.violation_accident, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mspinner.setAdapter(adapter);
+        mspinner.setOnItemSelectedListener(this);
+
+        /////////////////////////////
 
         Button scan_qr = (Button) view.findViewById(R.id.scan_qr);
 
@@ -225,6 +242,7 @@ public class DataEntryFragment extends Fragment implements LocationListener {
         String LocationVal = mLocation.getText().toString().trim();
         String DateVal = mDate.getText().toString().trim();
         String TimeVal = mTime.getText().toString().trim();
+        String SpinnerVal = mspinner.getSelectedItem().toString().trim();
 
 
 //        if (!TextUtils.isEmpty(test)){
@@ -236,18 +254,18 @@ public class DataEntryFragment extends Fragment implements LocationListener {
             newPost.child("Location").setValue(LocationVal);
             newPost.child("Date").setValue(DateVal);
             newPost.child("Time").setValue(TimeVal);
+            newPost.child("Violation or Accident").setValue(SpinnerVal);
+
 
 
 
       //  }
 
-
-
     }
 
 
 
-//    private ActionBar getSupportActionBar() {
+    //    private ActionBar getSupportActionBar() {
 //    }
 
 //    private void setContentView(int fragment_data_entry) {
@@ -304,6 +322,20 @@ public class DataEntryFragment extends Fragment implements LocationListener {
 //                .setPositiveButton("OK")
 
     }
+
+
+    //spinner
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    //spinner
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
 
 }
 

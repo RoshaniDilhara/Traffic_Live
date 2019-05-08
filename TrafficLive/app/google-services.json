@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "320447358032-2ja1ffb1580perv4kot05po92l7ro82v.apps.googleusercontent.com",
+          "client_id": "320447358032-ugiav3lgpl2jcto3pm860plheubhtoem.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.trafficlive",
-            "certificate_hash": "4f50b31a33d9041f1a2992ed9a7275e2e72c48e3"
+            "certificate_hash": "983b09ac27914a16b9f37767bfa55aa90ac74b32"
           }
         },
         {
@@ -31,11 +31,11 @@
           }
         },
         {
-          "client_id": "320447358032-ugiav3lgpl2jcto3pm860plheubhtoem.apps.googleusercontent.com",
+          "client_id": "320447358032-2ja1ffb1580perv4kot05po92l7ro82v.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.trafficlive",
-            "certificate_hash": "983b09ac27914a16b9f37767bfa55aa90ac74b32"
+            "certificate_hash": "4f50b31a33d9041f1a2992ed9a7275e2e72c48e3"
           }
         },
         {
