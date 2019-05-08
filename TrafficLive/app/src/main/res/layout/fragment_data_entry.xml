@@ -8,7 +8,9 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingRight="16dp"
+    android:background="@drawable/login_bg_style"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,16 +19,10 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:windowBackground">
+            android:layout_height="match_parent">
 
             <!-- TODO: Update blank fragment layout -->
-            <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:text="Data Entry"-->
-            <!--android:layout_centerVertical="true"-->
-            <!--/>-->
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,58 +34,63 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="55dp"
-                    android:text="License Details" />
+                    android:text="License Details"
+                    android:textColor="#000"/>
 
                 <Button
                     android:id="@+id/scan_qr"
                     android:layout_width="wrap_content"
-
-
                     android:layout_height="wrap_content"
                     android:layout_marginTop="55dp"
-                    android:background="#96eab5"
+                    android:text="QR Scanner"
                     android:padding="15dp"
-                    android:text="QR Scanner" />
+                    android:background="@drawable/data_entry_btn_style"
+                    android:textColor=" #000"/>
             </LinearLayout>
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp" />
+                android:layout_marginTop="25dp"/>
+
 
 
             <TextView
                 android:id="@+id/numPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Number Plate"
                 android:layout_marginTop="125dp"
-                android:text="Number Plate" />
+                android:textColor="#000"/>
 
             <Button
                 android:id="@+id/rec_numPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Recognize Number Plate"
                 android:layout_marginTop="150dp"
-                android:background="@color/btcolor"
                 android:padding="15dp"
-                android:text="Recognize Number Plate" />
+                android:background="@drawable/data_entry_btn_style"
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/locationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Location"
                 android:layout_marginTop="230dp"
-                android:text="Location" />
+                android:textColor="#000"/>
 
             <Button
                 android:id="@+id/getLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="260dp"
-                android:background="@color/btcolor"
+                android:text="Get Current Location"
                 android:padding="15dp"
-                android:text="Get Current Location" />
+                android:layout_marginTop="260dp"
+                android:background="@drawable/data_entry_btn_style"
+                android:textColor="#000"/>
 
 
             <TextView
@@ -97,7 +98,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="320dp"
-                android:text="Enter the Date" />
+                android:text="Enter the Date"
+                android:textColor="#000"/>
 
             <!--<TextView-->
             <!--android:id="@+id/time"-->
@@ -107,50 +109,47 @@
             <!--android:text="Enter Time" />-->
 
 
+
             <TextView
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="350dp"
-                android:text="Select Time" />
+                android:text="Select Time"
+                android:textColor="#000"/>
 
             <Button
                 android:id="@+id/timeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="370dp"
-                android:background="@color/btcolor"
-                android:text="Get time" />
+                android:text="Get time"
+                android:background="@drawable/data_entry_btn_style"
+                android:textColor="#000"/>
 
 
             <!--<Button-->
-                <!--android:id="@+id/submit"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="SUBMIT"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_marginTop="700dp"-->
-                <!--android:background="@color/colorPrimaryDark"/>-->
+            <!--android:id="@+id/submit"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="SUBMIT"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_marginTop="700dp"-->
+            <!--android:background="@color/colorPrimaryDark"/>-->
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="700dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="SUBMIT" />
-
                 android:text="SUBMIT"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="700dp"/>
-
+                android:layout_marginTop="700dp"
+                android:background="@drawable/reg_btn_style"
+                android:textColor="#fff"/>
 
         </RelativeLayout>
     </LinearLayout>
