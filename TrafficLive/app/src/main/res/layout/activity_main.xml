@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/regProgressBar"
-        android:textColor="#000"/>
+        android:textColor="#fff"/>
 
 
 </android.support.constraint.ConstraintLayout>
