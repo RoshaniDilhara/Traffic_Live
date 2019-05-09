@@ -24,6 +24,12 @@
         <activity
             android:name=".QRActivity"
             android:screenOrientation="portrait">
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 0d4e63b782ad2638aba45956d92bbc68d02af79d
             <meta-data
                 android:name="com.google.firebase.ml.vision.DEPENDENCIES"
                 android:value="barcode" />

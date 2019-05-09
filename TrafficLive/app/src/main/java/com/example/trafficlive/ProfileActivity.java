@@ -2,7 +2,6 @@ package com.example.trafficlive;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +36,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         getlogin.setOnClickListener(this);
 
         savebtn =(Button) findViewById(R.id.savebtn);
-
         savebtn.setOnClickListener(this);
     }
 
@@ -54,7 +52,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         }
         if(view == savebtn){
             mAuth.signOut() ;
-
             savebtn.setVisibility(View.GONE);
             getlogin.setVisibility(View.GONE);
             Intent intent7 = new Intent(ProfileActivity.this, BtnnavActivity.class);

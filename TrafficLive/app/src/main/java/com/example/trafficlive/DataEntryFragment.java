@@ -57,6 +57,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    //TextView scanResults;
+
     private TextView mLicenceDetails;
     private TextView mNumPlate;
     private TextView mLocation;
@@ -142,13 +144,26 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         /////////////////////////////
 
         Button scan_qr = (Button) view.findViewById(R.id.scan_qr);
+
         scan_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), QRActivity.class);
                 startActivity(intent);
+               // TextView qrView = (TextView) view.findViewById(R.id.licence_details);
+                //qrView.setText(QRActivity.this.toString());
+                //String strtext = getArguments().getString("QRActivity");
+                //mLicenceDetails.setText(strtext);
+                //readBundle(getArguments());
+
+
             }
+
         });
+
+        readBundle(getArguments());
+            //String strtext = getArguments().getString("QRActivity");
+            //mLicenceDetails.setText(strtext);
 
         Button rec_numPlate = (Button) view.findViewById(R.id.rec_numPlate);
         rec_numPlate.setOnClickListener(new View.OnClickListener() {
@@ -228,6 +243,16 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         });
 
         return view;
+    }
+
+
+    private void readBundle(Bundle bundle) {
+        if (bundle != null) {
+
+            String strtext = bundle.getString("QRActivity");
+            mLicenceDetails.setText(strtext);
+
+        }
     }
 
     private void startPosting() {

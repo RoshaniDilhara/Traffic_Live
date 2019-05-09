@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -32,6 +33,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,6 +75,17 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewSignin = (TextView) findViewById(R.id.textViewSignin);
         loadingProgress.setVisibility(View.VISIBLE);
 
+//        textViewSignin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //will open login activity here
+//                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+//                startActivity(loginActivity);
+//                finish();
+//
+//            }
+//        });
+
         mAuth = FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser() != null){
@@ -81,17 +95,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        //when click signin
-        textViewSignin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //will open login activity here
-                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
-                startActivity(loginActivity);
-                finish();
 
-            }
-        });
+        //when click signin
+//        textViewSignin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                //will open login activity here
+//                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+//                startActivity(loginActivity);
+//                finish();
+//
+//            }
+//        });
 
              //when click regbtn
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
                 final String email = userEmail.getText().toString().trim();
                 final String password = userPassword.getText().toString().trim();
                 final String password2 = userPassword2.getText().toString().trim();
-                final String name = userName.getText().toString();
+                final String name = userName.getText().toString().trim();
 
                 if( email.isEmpty() || name.isEmpty() || password.isEmpty() || password2.isEmpty() ){
 
@@ -132,7 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 progressDialog.dismiss();
-
             }
         });
 
@@ -168,10 +182,14 @@ public class MainActivity extends AppCompatActivity {
                             updateUserInfo(name ,pickedImgUri,mAuth.getCurrentUser());
                             ///////////intent for profile activity
 
-                            String user_id = mAuth.getCurrentUser().getUid();
-                            DatabaseReference current_user_db = mDatabase.child(user_id);
-                            current_user_db.child("Name").setValue(name);
-                            current_user_db.child("E-mail").setValue(email);
+                         String user_id = mAuth.getCurrentUser().getUid();
+                         DatabaseReference current_user_db = mDatabase.child(user_id);
+                         current_user_db.child("Name").setValue(name);
+                         current_user_db.child("E-mail").setValue(email);
+                            /////
+//                            Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+//                            startActivity(loginActivity);
+//                            finish();
 
                         }
                         else
@@ -193,7 +211,7 @@ public class MainActivity extends AppCompatActivity {
         //first we need to upload user photo to firebase storage and get url
 
         StorageReference mStorage = FirebaseStorage.getInstance().getReference().child("users_photos");
-        final StorageReference imageFilePath = mStorage.child(pickedImgUri.getLastPathSegment());
+        final StorageReference imageFilePath = mStorage.child(Objects.requireNonNull(pickedImgUri.getLastPathSegment()));
 
         imageFilePath.putFile(pickedImgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>(){
             @Override
@@ -220,8 +238,12 @@ public class MainActivity extends AppCompatActivity {
 
                                         if (task.isSuccessful()){
                                             //user info updated successfully
-                                            showMessage("Register Complete");
-                                            updateUI();
+                                           // showMessage("Register Complete");
+                                            //////////////////////////
+                                            Intent intent2 = new Intent(getApplicationContext(),ProfileActivity.class);
+                                            startActivity(intent2);
+                                            finish();
+                                            //updateUI();
                                         }
                                     }
                                 });
@@ -231,12 +253,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void updateUI(){
-
-        Intent intent2 = new Intent(getApplicationContext(),LoginActivity.class);
-        startActivity(intent2);
-        //finish();
-    }
+//    private void updateUI(){
+//
+//        Intent intent2 = new Intent(getApplicationContext(),ProfileActivity.class);
+//        startActivity(intent2);
+//        finish();
+//    }
 
     //simple method to show toast message
     private void showMessage(String message){
