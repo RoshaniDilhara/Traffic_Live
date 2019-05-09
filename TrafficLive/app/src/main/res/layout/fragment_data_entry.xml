@@ -22,12 +22,7 @@
             android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="Data Entry"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--/>-->
+
 
     <LinearLayout
         android:layout_width="match_parent"

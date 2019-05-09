@@ -32,7 +32,7 @@
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
-        android:text="Search Here(NIC)..."
+        android:hint="Search Here(NIC)..."
         android:textColor="#999999"
         android:textSize="14sp"
         app:fontFamily="@font/nunito_semibold"/>
@@ -41,12 +41,11 @@
         android:id="@+id/searchBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/magnifier"
         android:layout_below="@+id/heading_label"
-        android:paddingTop="25dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/search_field"
-        android:background="#ffffff"/>
+        android:paddingTop="25dp"
+        android:src="@drawable/magnifier" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
