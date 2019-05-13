@@ -174,6 +174,9 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
             }
         });
 
+
+        readBundle2(getArguments());
+
         //enter date
         mDisplayDate = (TextView) view.findViewById(R.id.date);
 
@@ -251,6 +254,15 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
             String strtext = bundle.getString("QRActivity");
             mLicenceDetails.setText(strtext);
+
+        }
+    }
+
+    private void readBundle2(Bundle bundle) {
+        if (bundle != null) {
+
+            String strtext2 = bundle.getString("NumPlateActivity");
+            mNumPlate.setText(strtext2);
 
         }
     }
