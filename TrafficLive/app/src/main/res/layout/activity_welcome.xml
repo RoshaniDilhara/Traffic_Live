@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorAccent"
     android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
 
@@ -24,7 +24,7 @@
         android:layout_below="@id/welcome"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="56dp"
-        android:indeterminateTint="@color/colorAccent"
+        android:indeterminateTint="#FFFF00"
         android:indeterminateTintMode="src_atop"
         android:visibility="visible"
         />

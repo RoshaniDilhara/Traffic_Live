@@ -70,9 +70,9 @@ public class ViolationFragment extends Fragment {
 
     private void firebaseUsersSearch(String searchText) {
 
-        Toast.makeText(getActivity(),"Started Button",Toast.LENGTH_LONG).show();;
+        Toast.makeText(getActivity(),"Started Search",Toast.LENGTH_LONG).show();;
 
-        Query firebaseSearchQuery = mUserDatabase.orderByChild("Time").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mUserDatabase.orderByChild("Date").startAt(searchText).endAt(searchText + "\uf8ff");
 
         FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>()
                 .setQuery(mUserDatabase, Users.class)
