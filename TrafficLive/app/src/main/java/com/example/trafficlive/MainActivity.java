@@ -75,16 +75,16 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewSignin = (TextView) findViewById(R.id.textViewSignin);
         loadingProgress.setVisibility(View.VISIBLE);
 
-//        textViewSignin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //will open login activity here
-//                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
-//                startActivity(loginActivity);
-//                finish();
-//
-//            }
-//        });
+        textViewSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //will open login activity here
+                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(loginActivity);
+                finish();
+
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
