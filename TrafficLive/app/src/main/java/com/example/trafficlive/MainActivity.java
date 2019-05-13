@@ -74,16 +74,16 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewSignin = (TextView) findViewById(R.id.textViewSignin);
         loadingProgress.setVisibility(View.VISIBLE);
 
-//        textViewSignin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //will open login activity here
-//                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
-//                startActivity(loginActivity);
-//                finish();
-//
-//            }
-//        });
+        textViewSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //will open login activity here
+                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(loginActivity);
+                finish();
+
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -95,17 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //when click signin
-//        textViewSignin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //will open login activity here
-//                Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
-//                startActivity(loginActivity);
-//                finish();
-//
-//            }
-//        });
+
 
              //when click regbtn
         regBtn.setOnClickListener(new View.OnClickListener() {
@@ -139,10 +129,6 @@ public class MainActivity extends AppCompatActivity {
                     progressDialog.setMessage("Registering user...");
                     progressDialog.show();
                     CreateUserAccount(email,name,password);
-                   // progressDialog.setMessage("Registering user...");
-                   // progressDialog.show();
-////////
-                    //will open login activity here
 
                 }
                 progressDialog.dismiss();
@@ -185,10 +171,7 @@ public class MainActivity extends AppCompatActivity {
                          DatabaseReference current_user_db = mDatabase.child(user_id);
                          current_user_db.child("Name").setValue(name);
                          current_user_db.child("E-mail").setValue(email);
-                            /////
-//                            Intent loginActivity = new Intent(getApplicationContext(),LoginActivity.class);
-//                            startActivity(loginActivity);
-//                            finish();
+
 
                         }
                         else
