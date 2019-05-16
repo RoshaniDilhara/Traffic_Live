@@ -30,6 +30,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -70,7 +72,12 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
 
-//    private FirebaseAuth mAuth;
+
+//    private DatabaseReference mDatabaseUser;
+
+    private FirebaseAuth mAuth;
+
+    private FirebaseUser mCurrentUser;
 //    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
@@ -90,9 +97,15 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
         mStorage = FirebaseStorage.getInstance().getReference();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Violator");
+        mDatabase.keepSynced(true);
+
+//        mDatabaseUser = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
 
 
-//        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        mCurrentUser = mAuth.getCurrentUser();
+
 //        mAuthListener = new FirebaseAuth.AuthStateListener() {
 //            @Override
 //            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -160,6 +173,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
             }
 
         });
+
+
 
         readBundle(getArguments());
             //String strtext = getArguments().getString("QRActivity");
@@ -249,6 +264,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     }
 
 
+
+
     private void readBundle(Bundle bundle) {
         if (bundle != null) {
 
@@ -257,6 +274,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
         }
     }
+
 
     private void readBundle2(Bundle bundle) {
         if (bundle != null) {
@@ -269,24 +287,46 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
     private void startPosting() {
 
-        String LicenceDetVal = mLicenceDetails.getText().toString().trim();
-        String NumPlateVal = mNumPlate.getText().toString().trim();
-        String LocationVal = mLocation.getText().toString().trim();
-        String DateVal = mDate.getText().toString().trim();
-        String TimeVal = mTime.getText().toString().trim();
-        String SpinnerVal = mspinner.getSelectedItem().toString().trim();
+        final String LicenceDetVal = mLicenceDetails.getText().toString().trim();
+        final String NumPlateVal = mNumPlate.getText().toString().trim();
+        final String LocationVal = mLocation.getText().toString().trim();
+        final String DateVal = mDate.getText().toString().trim();
+        final String TimeVal = mTime.getText().toString().trim();
+        final String SpinnerVal = mspinner.getSelectedItem().toString().trim();
 
 
 //        if (!TextUtils.isEmpty(test)){
 
-            DatabaseReference newPost = mDatabase.push();
+            final DatabaseReference newPost = mDatabase.push();
 
-            newPost.child("LicenceDetails").setValue(LicenceDetVal);
-            newPost.child("NumberPlate").setValue(NumPlateVal);
-            newPost.child("Location").setValue(LocationVal);
-            newPost.child("Date").setValue(DateVal);
-            newPost.child("Time").setValue(TimeVal);
-            newPost.child("ViolationOrAccident").setValue(SpinnerVal);
+        newPost.child("LicenceDetails").setValue(LicenceDetVal);
+        newPost.child("NumberPlate").setValue(NumPlateVal);
+        newPost.child("Location").setValue(LocationVal);
+        newPost.child("Date").setValue(DateVal);
+        newPost.child("Time").setValue(TimeVal);
+        newPost.child("ViolationOrAccident").setValue(SpinnerVal);
+
+//        mDatabaseUser.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+//                newPost.child("LicenceDetails").setValue(LicenceDetVal);
+//                newPost.child("NumberPlate").setValue(NumPlateVal);
+//                newPost.child("Location").setValue(LocationVal);
+//                newPost.child("Date").setValue(DateVal);
+//                newPost.child("Time").setValue(TimeVal);
+//                newPost.child("ViolationOrAccident").setValue(SpinnerVal);
+//                newPost.child("UId").setValue(mCurrentUser.getUid());
+//                newPost.child("UserName").setValue(dataSnapshot.child("Name").getValue());
+//                newPost.child("UserEmail").setValue(dataSnapshot.child("E-mail").getValue());
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
 
 
 

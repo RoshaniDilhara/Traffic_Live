@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DataEntryFragment"
-    android:id="@+id/scrollView01"
-    android:paddingTop="16dp"
-    android:paddingBottom="16dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:paddingTop="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context=".DataEntryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,94 +24,94 @@
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"/>
+                android:layout_marginTop="25dp" />
 
 
-                <TextView
-                    android:id="@+id/licence_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:textColor="#000"
-                    android:hint="Licence Details..."
-                    android:ems="10"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_below="@+id/spinner"
-                    android:background="@drawable/search_layout"/>
+            <TextView
+                android:id="@+id/licence_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/search_layout"
+                android:ems="10"
+                android:hint="Licence Details..."
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="#000" />
 
-                <Button
-                    android:id="@+id/scan_qr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:text="QR Scanner"
-                    android:layout_below="@+id/spinner"
-                    android:padding="15dp"
-                    android:background="@drawable/data_entry_btn_style"
-                    android:textColor=" #000"
-                    android:ems="10"
-                    android:layout_toRightOf="@+id/licence_details"/>
+            <Button
+                android:id="@+id/scan_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner"
+                android:layout_marginTop="50dp"
+                android:layout_toRightOf="@+id/licence_details"
+                android:background="@drawable/data_entry_btn_style"
+                android:ems="10"
+                android:padding="15dp"
+                android:text="QR Scanner"
+                android:textColor=" #000" />
 
 
             <TextView
                 android:id="@+id/numPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Number Plate..."
-                android:layout_marginTop="55dp"
                 android:layout_below="@+id/licence_details"
-                android:textColor="#000"
+                android:layout_marginTop="55dp"
+                android:background="@drawable/search_layout"
                 android:ems="10"
+                android:hint="Number Plate..."
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@drawable/search_layout"/>
+                android:textColor="#000" />
 
             <Button
                 android:id="@+id/rec_numPlate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Recognize Number Plate"
                 android:layout_below="@+id/scan_qr"
                 android:layout_marginTop="40dp"
-                android:padding="1dp"
-                android:background="@drawable/data_entry_btn_style"
-                android:textColor="#000"
                 android:layout_toRightOf="@+id/numPlate"
-                android:ems="10"/>
+                android:background="@drawable/data_entry_btn_style"
+                android:ems="10"
+                android:padding="1dp"
+                android:text="Recognize Number Plate"
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/locationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Location"
-                android:layout_marginTop="55dp"
                 android:layout_below="@+id/numPlate"
-                android:textColor="#000"
+                android:layout_marginTop="55dp"
+                android:background="@drawable/search_layout"
                 android:ems="10"
+                android:hint="Location"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@drawable/search_layout"/>
+                android:textColor="#000" />
 
             <Button
                 android:id="@+id/getLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get Current Location"
-                android:paddingTop="1dp"
-                android:paddingRight="3dp"
                 android:layout_below="@+id/numPlate"
                 android:layout_marginTop="47dp"
-                android:background="@drawable/data_entry_btn_style"
-                android:textColor="#000"
                 android:layout_toRightOf="@+id/locationText"
-                android:ems="10"/>
+                android:background="@drawable/data_entry_btn_style"
+                android:ems="10"
+                android:paddingTop="1dp"
+                android:paddingRight="3dp"
+                android:text="Get Current Location"
+                android:textColor="#000" />
 
 
             <TextView
@@ -119,30 +119,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/locationText"
-                android:hint="Select Date"
                 android:layout_marginTop="55dp"
-                android:textColor="#000"
+                android:background="@drawable/search_layout"
                 android:ems="10"
+                android:hint="Select Date"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@drawable/search_layout"/>
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/timer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/date"
-                android:hint="Select Time"
                 android:layout_marginTop="55dp"
-                android:textColor="#000"
+                android:background="@drawable/search_layout"
                 android:ems="10"
+                android:hint="Select Time"
                 android:paddingLeft="10dp"
                 android:paddingTop="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@drawable/search_layout"/>
+                android:textColor="#000" />
 
             <Button
                 android:id="@+id/timeBtn"
@@ -150,25 +150,24 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/locationText"
                 android:layout_marginTop="142dp"
+                android:layout_toRightOf="@+id/timer"
+                android:background="@drawable/data_entry_btn_style"
+                android:ems="10"
                 android:padding="1dp"
                 android:text="Get time"
-                android:background="@drawable/data_entry_btn_style"
-                android:textColor="#000"
-                android:layout_toRightOf="@+id/timer"
-                android:ems="10"/>
-
+                android:textColor="#000" />
 
 
             <Button
                 android:id="@+id/submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SUBMIT"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="600dp"
                 android:background="@drawable/reg_btn_style"
-                android:textColor="#fff"/>
+                android:text="SUBMIT"
+                android:textColor="#fff" />
 
         </RelativeLayout>
     </LinearLayout>

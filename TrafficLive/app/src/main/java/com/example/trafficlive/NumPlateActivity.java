@@ -34,6 +34,8 @@ public class NumPlateActivity extends AppCompatActivity {
 
 
 
+
+
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
             case RequestCameraPermissionId:
@@ -52,6 +54,8 @@ public class NumPlateActivity extends AppCompatActivity {
 
         }
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,9 +137,9 @@ public class NumPlateActivity extends AppCompatActivity {
                                         Bundle bundle = new Bundle();
                                         bundle.putString("NumPlateActivity", (String) textView.getText());
 // set Fragmentclass Arguments
-                                        DataEntryFragment fragobj2 = new DataEntryFragment();
-                                        fragobj2.setArguments(bundle);
-                                        getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragobj2).addToBackStack(null).commit();
+                                        DataEntryFragment fragobj = new DataEntryFragment();
+                                        fragobj.setArguments(bundle);
+                                        getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragobj).addToBackStack(null).commit();
 
                                     }
 
@@ -150,4 +154,7 @@ public class NumPlateActivity extends AppCompatActivity {
 
 
     }
+
+
+
 }
