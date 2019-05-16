@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,6 +22,11 @@ public class HelpFragment extends Fragment {
     private LinearLayout mDotLayout;
 
     private TextView[] mDots;
+
+    private Button mNextBtn;
+    private Button mBackBtn;
+    private int mCurrentPage;
+
 
     private SliderAdapter sliderAdapter;
 
@@ -38,6 +44,9 @@ public class HelpFragment extends Fragment {
 
         mSlideViewPager = helpview.findViewById(R.id.slideViewPager);
         mDotLayout = helpview.findViewById(R.id.dotsLayout);
+
+        mNextBtn = helpview.findViewById(R.id.nextBtn);
+        mBackBtn = helpview.findViewById(R.id.previousBtn);
 
         sliderAdapter = new SliderAdapter(getContext());
         mSlideViewPager.setAdapter(sliderAdapter);
@@ -83,6 +92,36 @@ public class HelpFragment extends Fragment {
         public void onPageSelected(int i) {
 
             addDOtsIndicator(i);
+            mCurrentPage = i;
+
+            if (i == 0){
+
+                mNextBtn.setEnabled(true);
+                mBackBtn.setEnabled(false);
+                mBackBtn.setVisibility(View.INVISIBLE);
+
+                mNextBtn.setText("Next");
+                mBackBtn.setText("");
+
+            }else if (i == mDots.length - 1){
+
+                mNextBtn.setEnabled(true);
+                mBackBtn.setEnabled(true);
+                mBackBtn.setVisibility(View.VISIBLE);
+
+                mNextBtn.setText("Finish");
+                mBackBtn.setText("Back");
+
+            }else {
+
+                mNextBtn.setEnabled(true);
+                mBackBtn.setEnabled(true);
+                mBackBtn.setVisibility(View.VISIBLE);
+
+                mNextBtn.setText("Next");
+                mBackBtn.setText("Back");
+
+            }
 
         }
 
