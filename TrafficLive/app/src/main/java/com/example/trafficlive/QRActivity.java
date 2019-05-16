@@ -45,6 +45,7 @@ public class QRActivity extends AppCompatActivity {
     AlertDialog waitingDialog;
     private static FragmentManager fragmentManager;
 
+
     protected void onResume(){
         super.onResume();
         cameraView.start();
@@ -109,6 +110,11 @@ public class QRActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
     private void runDetector(Bitmap bitmap) {
         FirebaseVisionImage image=FirebaseVisionImage.fromBitmap(bitmap);
         FirebaseVisionBarcodeDetectorOptions options= new FirebaseVisionBarcodeDetectorOptions.Builder()
