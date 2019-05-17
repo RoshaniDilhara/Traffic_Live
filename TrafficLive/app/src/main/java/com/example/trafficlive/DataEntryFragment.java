@@ -175,7 +175,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         });
 
 
-
+        
         readBundle(getArguments());
             //String strtext = getArguments().getString("QRActivity");
             //mLicenceDetails.setText(strtext);
@@ -414,6 +414,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 //
 //        mAuth.addAuthStateListener(mAuthListener);
 //    }
+
 
 
 }
