@@ -55,6 +55,24 @@ public class HelpFragment extends Fragment {
 
         mSlideViewPager.addOnPageChangeListener(viewListener);
 
+        mNextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mSlideViewPager.setCurrentItem(mCurrentPage + 1);
+
+            }
+        });
+
+        mBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mSlideViewPager.setCurrentItem(mCurrentPage - 1);
+
+            }
+        });
+
         return helpview;
     }
 
