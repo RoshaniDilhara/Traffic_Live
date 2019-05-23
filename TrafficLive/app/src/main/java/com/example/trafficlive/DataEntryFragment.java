@@ -91,6 +91,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+        // setRetainInstance(true);
         final View view = inflater.inflate(R.layout.fragment_data_entry, container, false);
 
         ///////////////sending data/////////////////
@@ -175,7 +177,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         });
 
 
-        
+
         readBundle(getArguments());
             //String strtext = getArguments().getString("QRActivity");
             //mLicenceDetails.setText(strtext);

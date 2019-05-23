@@ -136,10 +136,14 @@ public class NumPlateActivity extends AppCompatActivity {
 
                                         Bundle bundle = new Bundle();
                                         bundle.putString("NumPlateActivity", (String) textView.getText());
+                                        Intent intent81 = new Intent(NumPlateActivity.this, BtnnavActivity.class);
+                                        intent81.putExtras(bundle);
+                                        startActivity(intent81);
+                                        finish();
 // set Fragmentclass Arguments
-                                        DataEntryFragment fragobj = new DataEntryFragment();
-                                        fragobj.setArguments(bundle);
-                                        getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragobj).addToBackStack(null).commit();
+                                        //DataEntryFragment fragobj = new DataEntryFragment();
+                                        //fragobj.setArguments(bundle);
+                                        //getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragobj).addToBackStack(null).commit();
 
                                     }
 

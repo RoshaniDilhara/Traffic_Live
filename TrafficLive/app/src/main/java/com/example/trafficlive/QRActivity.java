@@ -160,10 +160,16 @@ public class QRActivity extends AppCompatActivity {
                         // fragmentManager = getSupportFragmentManager();
                         Bundle bundle = new Bundle();
                         bundle.putString("QRActivity", item.getRawValue());
+
+                    Intent intent80 = new Intent(QRActivity.this, BtnnavActivity.class);
+                    intent80.putExtras(bundle);
+                    startActivity(intent80);
+                    finish();
 // set Fragmentclass Arguments
-                        DataEntryFragment fragobj = new DataEntryFragment();
-                        fragobj.setArguments(bundle);
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragobj).addToBackStack(null).commit();
+
+                        //DataEntryFragment fragobj = new DataEntryFragment();
+                        //fragobj.setArguments(bundle);
+                       // getSupportFragmentManager().beginTransaction().replace(R.id.container, fragobj).addToBackStack(null).commit();
 
                         //fragmentManager.popBackStack();
 

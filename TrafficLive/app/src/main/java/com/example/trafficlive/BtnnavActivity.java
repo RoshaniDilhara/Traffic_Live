@@ -23,7 +23,14 @@ public class BtnnavActivity extends AppCompatActivity implements NavigationView.
         BottomNavigationView bottomNav=findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new DataEntryFragment()).commit();
+        Bundle bundle = getIntent().getExtras();
+
+//Extract the data…
+        //String venName = bundle.getString("QRActivity");
+        DataEntryFragment fragobj = new DataEntryFragment();
+        fragobj.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragobj).commit();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
