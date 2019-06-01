@@ -29,6 +29,7 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+//import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +49,13 @@ import java.util.Locale;
  */
 public class DataEntryFragment extends Fragment implements LocationListener, AdapterView.OnItemSelectedListener {
 
+    //-----------------------------------------
+    private String qr_code;
+    private String numPlate_code;
+    //-----------------------------------------
 
+
+    //SharedPreferences sharedpreferences;
     private Button getLocation;
     private TextView locationText;
 
@@ -92,7 +99,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
                              Bundle savedInstanceState) {
 
 
-        // setRetainInstance(true);
+
         final View view = inflater.inflate(R.layout.fragment_data_entry, container, false);
 
         ///////////////sending data/////////////////
@@ -163,13 +170,13 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         scan_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //---------------------------------------------------------
+                Bundle bundleIntent1 = new Bundle();
+                bundleIntent1.putString("NumPlateActivity", numPlate_code);
                 Intent intent = new Intent(getActivity(), QRActivity.class);
+                intent.putExtras(bundleIntent1);
                 startActivity(intent);
-               // TextView qrView = (TextView) view.findViewById(R.id.licence_details);
-                //qrView.setText(QRActivity.this.toString());
-                //String strtext = getArguments().getString("QRActivity");
-                //mLicenceDetails.setText(strtext);
-                //readBundle(getArguments());
+                //---------------------------------------------------------
 
 
             }
@@ -179,20 +186,32 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
 
         readBundle(getArguments());
-            //String strtext = getArguments().getString("QRActivity");
-            //mLicenceDetails.setText(strtext);
+
+
+
+
+
 
         Button rec_numPlate = (Button) view.findViewById(R.id.rec_numPlate);
         rec_numPlate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //-------------------------------------------------------------------
+                Bundle bundleIntent2 = new Bundle();
+                bundleIntent2.putString("QRActivity", qr_code);
                 Intent intent2 = new Intent(getActivity(), NumPlateActivity.class);
+                intent2.putExtras(bundleIntent2);
                 startActivity(intent2);
+
+                //---------------------------------------------------------------------
+                //readBundle(getArguments());
+
+
             }
         });
 
 
-        readBundle2(getArguments());
+        //readBundle2(getArguments());
 
         //enter date
         mDisplayDate = (TextView) view.findViewById(R.id.date);
@@ -249,12 +268,12 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         getLocation = (Button) view.findViewById(R.id.getLocation);
         locationText = (TextView) view.findViewById(R.id.locationText);
 
-        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            ActivityCompat.requestPermissions((Activity) getContext(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
+            ActivityCompat.requestPermissions((Activity) getContext(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 101);
 
         }
-        
+
         getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,26 +286,33 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
 
 
-
     private void readBundle(Bundle bundle) {
         if (bundle != null) {
 
-            String strtext = bundle.getString("QRActivity");
-            mLicenceDetails.setText(strtext);
+
+            //---------------------------------------------------
+            numPlate_code = bundle.getString("NumPlateActivity");
+            qr_code = bundle.getString("QRActivity");
+
+            mNumPlate.setText(numPlate_code);
+            mLicenceDetails.setText(qr_code);
+            //----------------------------------------------------
+
+
 
         }
     }
 
+    /*
+        private void readBundle2(Bundle bundle) {
+            if (bundle != null) {
 
-    private void readBundle2(Bundle bundle) {
-        if (bundle != null) {
+                String strtext2 = bundle.getString("NumPlateActivity");
+                mNumPlate.setText(strtext2);
 
-            String strtext2 = bundle.getString("NumPlateActivity");
-            mNumPlate.setText(strtext2);
-
+            }
         }
-    }
-
+    */
     private void startPosting() {
 
         final String LicenceDetVal = mLicenceDetails.getText().toString().trim();
@@ -299,7 +325,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
 //        if (!TextUtils.isEmpty(test)){
 
-            final DatabaseReference newPost = mDatabase.push();
+        final DatabaseReference newPost = mDatabase.push();
 
         newPost.child("LicenceDetails").setValue(LicenceDetVal);
         newPost.child("NumberPlate").setValue(NumPlateVal);
@@ -333,7 +359,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
 
 
-      //  }
+        //  }
 
     }
 

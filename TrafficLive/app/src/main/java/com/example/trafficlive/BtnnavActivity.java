@@ -15,25 +15,45 @@ import android.view.MenuItem;
 
 public class BtnnavActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+   // DataEntryFragment fragobj = new DataEntryFragment();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //savedInstanceState = null;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_btnnav);
 
         BottomNavigationView bottomNav=findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
 
+        /////Intent intent=getIntent();
+        /////Bundle extras = intent.getExtras();
+       // String qr = extras.getString("NumPlateActivity");
+        //String num= extras.getString("PQR");
+
         Bundle bundle = getIntent().getExtras();
+        //Bundle bundle = new Bundle();
 
 //Extract the data…
+        //String a=getIntent().getStringExtra("QR");
+        //String b=getIntent().getStringExtra("Num");
+        //String c=getIntent().getStringExtra("QRActivity");
         //String venName = bundle.getString("QRActivity");
-        DataEntryFragment fragobj = new DataEntryFragment();
-        fragobj.setArguments(bundle);
+        //String venName2 = bundle.getString("jk");
+        //String venName3 = bundle.getString("NumPlateActivity");
+       // bundle.putString("jk",a);
+       // bundle.putString("bb",b);
+        //bundle.putString("cc",c);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragobj).commit();
+            DataEntryFragment fragobj = new DataEntryFragment();
+           fragobj.setArguments(bundle);
 
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragobj).commit();
+       // }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
 
 
@@ -47,7 +67,18 @@ public class BtnnavActivity extends AppCompatActivity implements NavigationView.
         //navigationView.setNavigationItemSelectedListener(this);
         navigationView.setNavigationItemSelectedListener(this);
     }
+/*
+    public void onResume(){
+        super.onResume();
+        Bundle bundle = getIntent().getExtras();
+        DataEntryFragment fragobj = new DataEntryFragment();
+        fragobj.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragobj).commit();
 
+
+    }
+
+*/
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
