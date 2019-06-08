@@ -6,6 +6,10 @@
     <color name="btcolor">#7E48F7</color>
     <color name="black">#000</color>
     <color name="gray">#a0a0a0</color>
+    <color name="primaryDark">#292b3d</color>
+    <color name="graylight">#fafafa</color>
+    <color name="startblue">#09c6df</color>
+    <color name="endblue">#0bcce6</color>
 
 
 </resources>

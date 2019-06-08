@@ -14,7 +14,7 @@ public class Users {
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.Date = date;
     }
 
     public String getLocation() {
@@ -22,7 +22,7 @@ public class Users {
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.Location = location;
     }
 
     public String getTime() {
@@ -30,7 +30,7 @@ public class Users {
     }
 
     public void setTime(String time) {
-        Time = time;
+        this.Time = time;
     }
 
     public String getViolationOrAccident() {
@@ -38,14 +38,14 @@ public class Users {
     }
 
     public void setViolationOrAccident(String violationOrAccident) {
-        ViolationOrAccident = violationOrAccident;
+        this.ViolationOrAccident = violationOrAccident;
     }
 
     public Users(String date, String location, String time, String violationOrAccident) {
-        Date = date;
-        Location = location;
-        Time = time;
-        ViolationOrAccident = violationOrAccident;
+        this.Date = date;
+        this.Location = location;
+        this.Time = time;
+        this.ViolationOrAccident = violationOrAccident;
     }
 
 

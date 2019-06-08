@@ -43,14 +43,14 @@ public class ViolationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View violView = inflater.inflate(R.layout.fragment_violation,container,false);
+       final View violView = inflater.inflate(R.layout.fragment_violation,container,false);
 
         mSearchField = (EditText) violView.findViewById(R.id.search_field);
         mSearchBtn = (ImageButton) violView.findViewById(R.id.searchBtn);
 
         mResultList = (RecyclerView) violView.findViewById(R.id.result_list);
         mResultList.setHasFixedSize(true);
-        mResultList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mResultList.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mUserDatabase = FirebaseDatabase.getInstance().getReference("Violator");
 
@@ -70,15 +70,15 @@ public class ViolationFragment extends Fragment {
 
     private void firebaseUsersSearch(String searchText) {
 
-        Toast.makeText(getActivity(),"Started Search",Toast.LENGTH_LONG).show();;
+        Toast.makeText(getContext(),"Started Search",Toast.LENGTH_LONG).show();;
 
-        Query firebaseSearchQuery = mUserDatabase.orderByChild("Date").startAt(searchText).endAt(searchText + "\uf8ff");
+        Query firebaseSearchQuery = mUserDatabase.orderByChild("Time").startAt(searchText).endAt(searchText +"\uf8ff");
 
         FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>()
-                .setQuery(mUserDatabase, Users.class)
+                .setQuery(firebaseSearchQuery, Users.class)
                 .build();
 
-        FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
+        final FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
 
@@ -96,13 +96,43 @@ public class ViolationFragment extends Fragment {
 
 
                 return new UsersViewHolder(v);
-//                return null;
+
             }
+
+
+
         };
+
+
+//        FirebaseRecyclerAdapter<Users,UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
+//
+//             Users.class,
+//             R.layout.list_layout,
+//             UsersViewHolder.class,
+//             firebaseSearchQuery
+//
+//        ) {
+//            @Override
+//            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
+//
+//                holder.setDetails(model.getTime(),model.getViolationOrAccident(),model.getDate(),model.getLocation());
+//
+//            }
+//
+//            @NonNull
+//            @Override
+//            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+//                return null;
+//            }
+//        };
+
+
 
         mResultList.setAdapter(firebaseRecyclerAdapter);
 
     }
+
+
 
 
     //view holder class
