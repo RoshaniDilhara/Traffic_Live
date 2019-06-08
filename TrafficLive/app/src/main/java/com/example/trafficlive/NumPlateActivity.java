@@ -1,10 +1,15 @@
 package com.example.trafficlive;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +35,7 @@ public class NumPlateActivity extends AppCompatActivity {
     TextView textView;
     CameraSource cameraSource;
     final int RequestCameraPermissionId=1001;
-
+    private String qr_code;
 
 
 
@@ -61,6 +66,12 @@ public class NumPlateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_num_plate);
+
+        //----------------------------------------------------
+        Bundle bundle = getIntent().getExtras();
+        qr_code = bundle.getString("QRActivity");
+        //----------------------------------------------------
+
 
         cameraView=(SurfaceView)findViewById(R.id.surface_view);
         textView=(TextView)findViewById(R.id.text_view);
@@ -130,16 +141,22 @@ public class NumPlateActivity extends AppCompatActivity {
                                 btn_submittext.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                       btn_submittext.setVisibility(View.GONE);
+                                        btn_submittext.setVisibility(View.GONE);
                                         RelativeLayout f2 = (RelativeLayout) findViewById(R.id.container2);
                                         f2.removeAllViews();
 
+
+
                                         Bundle bundle = new Bundle();
                                         bundle.putString("NumPlateActivity", (String) textView.getText());
+                                        bundle.putString("QRActivity",qr_code);
+
+
+                                        Intent intent81 = new Intent(NumPlateActivity.this, BtnnavActivity.class);
+                                        intent81.putExtras(bundle);
+                                        startActivity(intent81);
+                                        finish();
 // set Fragmentclass Arguments
-                                        DataEntryFragment fragobj = new DataEntryFragment();
-                                        fragobj.setArguments(bundle);
-                                        getSupportFragmentManager().beginTransaction().replace(R.id.container2, fragobj).addToBackStack(null).commit();
 
                                     }
 
