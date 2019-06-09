@@ -4,13 +4,23 @@
 
 
     <TextView
+        android:id="@+id/VLicenceDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LicenceDetails"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
         android:id="@+id/Vtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Time"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"/>
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/VLicenceDetails"/>
 
 
     <TextView
@@ -35,15 +45,15 @@
 
 
 
-    <TextView
-        android:id="@+id/VlocationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Location"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_below="@+id/Vdate"/>
+    <!--<TextView-->
+        <!--android:id="@+id/VlocationText"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Location"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:layout_marginRight="10dp"-->
+        <!--android:layout_below="@+id/Vdate"/>-->
 
 
 </RelativeLayout>

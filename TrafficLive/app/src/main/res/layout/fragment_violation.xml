@@ -6,54 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".ViolationFragment">
 
-    <TextView
-        android:id="@+id/heading_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
-        android:text="Search For Previous Violations"
-        android:textColor="#555555"
-        android:textSize="24dp"
-        app:fontFamily="@font/nunito_bold" />
-
     <EditText
-        android:id="@+id/search_field"
-        android:layout_width="wrap_content"
+        android:id="@+id/search_edit_text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/heading_label"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/search_layout"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:hint="Search Here(NIC)..."
-        android:textColor="#999999"
-        android:textSize="14sp"
-        app:fontFamily="@font/nunito_semibold"/>
-
-    <ImageButton
-        android:id="@+id/searchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/heading_label"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/search_field"
-        android:paddingTop="25dp"
-        android:background="#fff"
-        android:src="@drawable/magnifier" />
+        android:hint="Search Here..."
+        android:layout_margin="10dp"/>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/result_list"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/search_field"
-        android:layout_marginTop="40dp" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/search_edit_text"
+        android:layout_marginTop="30dp"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/heading_label"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:text="Search For Previous Violations"-->
+        <!--android:textColor="#555555"-->
+        <!--android:textSize="24dp"-->
+        <!--app:fontFamily="@font/nunito_bold" />-->
+
+    <!--<EditText-->
+        <!--android:id="@+id/search_field"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/heading_label"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:background="@drawable/search_layout"-->
+        <!--android:ems="10"-->
+        <!--android:inputType="textPersonName"-->
+        <!--android:paddingLeft="10dp"-->
+        <!--android:paddingTop="10dp"-->
+        <!--android:paddingRight="10dp"-->
+        <!--android:paddingBottom="10dp"-->
+        <!--android:hint="Search Here(NIC)..."-->
+        <!--android:textColor="#999999"-->
+        <!--android:textSize="14sp"-->
+        <!--app:fontFamily="@font/nunito_semibold"/>-->
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/searchBtn"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/heading_label"-->
+        <!--android:layout_marginLeft="10dp"-->
+        <!--android:layout_toRightOf="@+id/search_field"-->
+        <!--android:paddingTop="25dp"-->
+        <!--android:background="#fff"-->
+        <!--android:src="@drawable/magnifier" />-->
+
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/result_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/search_field"-->
+        <!--android:layout_marginTop="40dp" />-->
 
 
 
