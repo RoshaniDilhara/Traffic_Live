@@ -15,9 +15,6 @@ import android.view.MenuItem;
 
 public class BtnnavActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-   // DataEntryFragment fragobj = new DataEntryFragment();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //savedInstanceState = null;
@@ -27,30 +24,14 @@ public class BtnnavActivity extends AppCompatActivity implements NavigationView.
         BottomNavigationView bottomNav=findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListner);
 
-        /////Intent intent=getIntent();
-        /////Bundle extras = intent.getExtras();
-       // String qr = extras.getString("NumPlateActivity");
-        //String num= extras.getString("PQR");
-
         Bundle bundle = getIntent().getExtras();
-        //Bundle bundle = new Bundle();
 
-//Extract the data…
-        //String a=getIntent().getStringExtra("QR");
-        //String b=getIntent().getStringExtra("Num");
-        //String c=getIntent().getStringExtra("QRActivity");
-        //String venName = bundle.getString("QRActivity");
-        //String venName2 = bundle.getString("jk");
-        //String venName3 = bundle.getString("NumPlateActivity");
-       // bundle.putString("jk",a);
-       // bundle.putString("bb",b);
-        //bundle.putString("cc",c);
 
             DataEntryFragment fragobj = new DataEntryFragment();
            fragobj.setArguments(bundle);
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragobj).commit();
-       // }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

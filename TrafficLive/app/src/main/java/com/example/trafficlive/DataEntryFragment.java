@@ -39,6 +39,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -53,7 +54,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private String qr_code;
     private String numPlate_code;
     //-----------------------------------------
-
+    private List<String> names;
 
     //SharedPreferences sharedpreferences;
     private Button getLocation;
@@ -75,6 +76,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private TextView mTime;
     private Button mSubmitBtn;
     private Spinner mspinner;
+    private Spinner mspinner1;
+
 
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
@@ -158,10 +161,61 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         ///////////spinner///////////
 
         mspinner = view.findViewById(R.id.spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),R.array.violation_accident, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mspinner.setAdapter(adapter);
-        mspinner.setOnItemSelectedListener(this);
+        mspinner1 = view.findViewById(R.id.spinnerViol);
+
+
+
+        mspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedClass = parent.getItemAtPosition(position).toString();
+                switch (selectedClass)
+                {
+                    case "Violation":
+                        // assigning div item list defined in XML to the div Spinner
+                        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),R.array.items_div_class_1, android.R.layout.simple_spinner_item);
+                        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        mspinner1.setAdapter(adapter1);
+
+
+                        break;
+
+                    case "Accident":
+
+                        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(getActivity(),R.array.items_div_class_2, android.R.layout.simple_spinner_item);
+                        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        mspinner1.setAdapter(adapter2);
+
+
+                        break;
+
+
+                }
+
+                //set divSpinner Visibility to Visible
+                mspinner1.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        mspinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
 
         /////////////////////////////
 
@@ -321,6 +375,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         final String DateVal = mDate.getText().toString().trim();
         final String TimeVal = mTime.getText().toString().trim();
         final String SpinnerVal = mspinner.getSelectedItem().toString().trim();
+        final String SpinnerVal1 = mspinner1.getSelectedItem().toString().trim();
+
 
 
 //        if (!TextUtils.isEmpty(test)){
@@ -333,6 +389,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         newPost.child("Date").setValue(DateVal);
         newPost.child("Time").setValue(TimeVal);
         newPost.child("ViolationOrAccident").setValue(SpinnerVal);
+        newPost.child("Fault").setValue(SpinnerVal1);
+
 
 //        mDatabaseUser.addValueEventListener(new ValueEventListener() {
 //            @Override
