@@ -17,4 +17,20 @@
         <item>Accident</item>
     </string-array>
 
+    <string-array name="items_div_class_1">
+        <item>Violate1</item>
+        <item>Violate2</item>
+        <item>Violate3</item>
+        <item>Violate4</item>
+    </string-array>
+
+    <string-array name="items_div_class_2">
+        <item>Accident1</item>
+        <item>Accident2</item>
+        <item>Accident3</item>
+        <item>Accident4</item>
+    </string-array>
+
+
+
 </resources>
