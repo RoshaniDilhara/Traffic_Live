@@ -113,7 +113,7 @@ public class ViolationFragment extends Fragment{
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 violOrAccList.clear();
                 dateList.clear();
@@ -135,25 +135,25 @@ public class ViolationFragment extends Fragment{
 
                     Log.e("log","top");
 
-                   if (LicenceDetails.toLowerCase().contains(searchedString)){
+//                   if (LicenceDetails.toLowerCase().contains(searchedString)){
                        Log.e("log","success");
                         licenceDetailsList.add(LicenceDetails);
                         dateList.add(Date);
                         timeList.add(Time);
                         violOrAccList.add(ViolationOrAccident);
                         counter++;
-                        
 
-                   }
-                    else if (Date.toLowerCase().contains(searchedString)){
 
-                        licenceDetailsList.add(LicenceDetails);
-                        dateList.add(Date);
-                        timeList.add(Time);
-                        violOrAccList.add(ViolationOrAccident);
-                        counter++;
+//                   }
+//                    else if (Date.toLowerCase().contains(searchedString)){
 
-                    }
+//                        licenceDetailsList.add(LicenceDetails);
+//                        dateList.add(Date);
+//                        timeList.add(Time);
+//                        violOrAccList.add(ViolationOrAccident);
+//                        counter++;
+//
+//                    }
 
                     if (counter == 20){
                         break;
