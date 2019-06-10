@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "320447358032-q5i92qh6a04r7lojqavs235pnsgc6jl0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.trafficlive",
+            "certificate_hash": "01b0b3374592cf1df7ff0f1d6d0206ca210acc3d"
+          }
+        },
+        {
           "client_id": "320447358032-ugiav3lgpl2jcto3pm860plheubhtoem.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
