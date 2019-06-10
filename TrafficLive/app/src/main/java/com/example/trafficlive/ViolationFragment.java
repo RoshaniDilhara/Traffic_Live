@@ -138,6 +138,7 @@ public class ViolationFragment extends Fragment {
                         violOrAccList.add(violOrAcc);
                         counter++;
 
+
                     }else if (date.toLowerCase().contains(searchedString)){
 
                         licenceDetailsList.add(licenceNum);
