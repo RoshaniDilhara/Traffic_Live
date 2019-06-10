@@ -4,35 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="205dp"
-        android:layout_height="172dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/userphoto" />
 
     <TextView
         android:id="@+id/slide_heading"
-        android:layout_width="wrap_content"
+        android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:gravity="center_vertical|center_horizontal"
         android:text="HEADING"
+        android:textAlignment="center"
+        android:textColor="#1b1b1b"
         android:textSize="20sp"
-        android:textColor="#000"
-        android:layout_below="@+id/imageView2"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/slide_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="500dp"
+        android:layout_height="400dp"
         android:layout_below="@id/slide_heading"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="60dp"
         android:padding="35dp"
-        android:text="ytfytdf yywgcytfy fygewycf ytfweytfytf ftfeyrfygfyfyt ytfetywy frtfeygytfyteyvy ftfyf"
-        android:textColor="#000"
+        android:text="Description for help fragment"
+        android:textColor="#808080"
         android:textSize="16sp" />
 
 </RelativeLayout>
