@@ -17,7 +17,7 @@
         <item>Accident</item>
     </string-array>
 
-    <string-array name="items_div_class_1">
+    <string-array name="item_div_class_1">
         <item>Violate1</item>
         <item>Violate2</item>
         <item>Violate3</item>

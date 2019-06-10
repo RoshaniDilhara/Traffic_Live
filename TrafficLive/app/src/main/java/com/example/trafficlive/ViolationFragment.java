@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ViolationFragment extends Fragment {
+public class ViolationFragment extends Fragment{
 
 //    private EditText mSearchField;
 //    private ImageButton mSearchBtn;
@@ -63,12 +64,12 @@ public class ViolationFragment extends Fragment {
         search_edit_text = (EditText) violView.findViewById(R.id.search_edit_text);
         recyclerView = (RecyclerView) violView.findViewById(R.id.recyclerView);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Violator");
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
 
         licenceDetailsList = new ArrayList<>();
         dateList = new ArrayList<>();
@@ -108,11 +109,11 @@ public class ViolationFragment extends Fragment {
 
     private void setAdapter(final String searchedString) {
 
+        Log.e("log","top 1");
 
-
-        databaseReference.child("Violator").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
 
                 violOrAccList.clear();
                 dateList.clear();
@@ -120,42 +121,47 @@ public class ViolationFragment extends Fragment {
                 licenceDetailsList.clear();
                 recyclerView.removeAllViews();
 
+                Log.e("log","top 2");
+
                 int counter = 0;
 
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
 
-                    String uid = snapshot.getKey();
-                    String licenceNum = snapshot.child("LicenceDetails").getValue(String.class);
-                    String date = snapshot.child("Date").getValue(String.class);
-                    String time = snapshot.child("Time").getValue(String.class);
-                    String violOrAcc = snapshot.child("ViolationOrAccident").getValue(String.class);
+                    //String uid = snapshot.getKey();
+                    String LicenceDetails = snapshot.child("LicenceDetails").getValue(String.class);
+                    String Date = snapshot.child("Date").getValue(String.class);
+                    String Time = snapshot.child("Time").getValue(String.class);
+                    String ViolationOrAccident = snapshot.child("ViolationOrAccident").getValue(String.class);
 
-                    if (licenceNum.toLowerCase().contains(searchedString)){
+                    Log.e("log","top");
+/*
+                   if (LicenceDetails.toLowerCase().contains(searchedString)) {
+                       Log.e("log", "success");
+                       licenceDetailsList.add(LicenceDetails);
+                       dateList.add(Date);
+                       timeList.add(Time);
+                       violOrAccList.add(ViolationOrAccident);
+                       counter++;
 
-                        licenceDetailsList.add(licenceNum);
-                        dateList.add(date);
-                        timeList.add(time);
-                        violOrAccList.add(violOrAcc);
-                        counter++;
+
+                   }else if (Date.toLowerCase().contains(searchedString)){
 
 
-                    }else if (date.toLowerCase().contains(searchedString)){
-
-                        licenceDetailsList.add(licenceNum);
-                        dateList.add(date);
-                        timeList.add(time);
-                        violOrAccList.add(violOrAcc);
+                        licenceDetailsList.add(LicenceDetails);
+                        dateList.add(Date);
+                        timeList.add(Time);
+                        violOrAccList.add(ViolationOrAccident);
                         counter++;
 
                     }
-
+*/
                     if (counter == 20){
                         break;
                     }
 
                 }
 
-                users = new Users(getContext(),violOrAccList,dateList,timeList,licenceDetailsList);
+                users = new Users(getActivity(),violOrAccList,dateList,timeList,licenceDetailsList);
                 recyclerView.setAdapter(users);
 
 

@@ -29,7 +29,6 @@ import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-//import android.content.SharedPreferences;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,10 +38,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+
+//import android.content.SharedPreferences;
 
 
 /**
@@ -173,7 +173,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
                 {
                     case "Violation":
                         // assigning div item list defined in XML to the div Spinner
-                        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),R.array.items_div_class_1, android.R.layout.simple_spinner_item);
+                        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(getActivity(),R.array.item_div_class_1, android.R.layout.simple_spinner_item);
                         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                         mspinner1.setAdapter(adapter1);
 
