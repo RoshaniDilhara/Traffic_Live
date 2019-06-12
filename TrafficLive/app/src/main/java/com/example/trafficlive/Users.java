@@ -14,35 +14,46 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
 
     Context context;
 
-    ArrayList<String> licenceDetailsList;
     ArrayList<String> dateList;
     ArrayList<String> timeList;
     ArrayList<String> violOrAccList;
+    ArrayList<String> faultList;
+    ArrayList<String> licenceDetailsList;
+    ArrayList<String> numplateList;
+    ArrayList<String> locationList;
 
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
-        TextView LicenceDetails,Date,Time,ViolationOrAccident;
+        TextView Date,Time,ViolationOrAccident,Fault,LicenceDetails,NumberPlate,Location;
 
 
         public SearchViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
-            LicenceDetails = (TextView) itemView.findViewById(R.id.VLicenceDetails);
             Date = (TextView) itemView.findViewById(R.id.Vdate);
             Time = (TextView) itemView.findViewById(R.id.Vtime);
             ViolationOrAccident = (TextView) itemView.findViewById(R.id.accident_violation);
+            Fault= (TextView) itemView.findViewById(R.id.Vfault);
+            LicenceDetails = (TextView) itemView.findViewById(R.id.VLicenceDetails);
+            NumberPlate = (TextView) itemView.findViewById(R.id.Vnumberplate);
+            Location = (TextView) itemView.findViewById(R.id.Vlocation);
+
         }
 
     }
 
-    public Users(Context context, ArrayList<String> licenceDetailsList, ArrayList<String> dateList, ArrayList<String> timeList, ArrayList<String> violOrAccList) {
+    public Users(Context context,  ArrayList<String> dateList, ArrayList<String> timeList, ArrayList<String> violOrAccList, ArrayList<String> faultList,ArrayList<String> licenceDetailsList, ArrayList<String> numplateList, ArrayList<String> locationList) {
         this.context = context;
-        this.licenceDetailsList = licenceDetailsList;
+
         this.dateList = dateList;
         this.timeList = timeList;
         this.violOrAccList = violOrAccList;
+        this.faultList =faultList;
+        this.licenceDetailsList = licenceDetailsList;
+        this.numplateList=numplateList;
+        this.locationList=locationList;
     }
 
 
@@ -58,64 +69,20 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull SearchViewHolder searchViewHolder, int i) {
-        searchViewHolder.ViolationOrAccident.setText(violOrAccList.get(i));
+
         searchViewHolder.Date.setText(dateList.get(i));
         searchViewHolder.Time.setText(timeList.get(i));
+        searchViewHolder.ViolationOrAccident.setText(violOrAccList.get(i));
+        searchViewHolder.Fault.setText(faultList.get(i));
         searchViewHolder.LicenceDetails.setText(licenceDetailsList.get(i));
+        searchViewHolder.NumberPlate.setText(numplateList.get(i));
+        searchViewHolder.Location.setText(locationList.get(i));
     }
 
     @Override
     public int getItemCount() {
         return licenceDetailsList.size();
     }
-
-
-//    //should match exactly to the database key names
-//    public String Date,Location,Time,ViolationOrAccident;
-//
-//    public Users(){
-//
-//    }
-//
-//    public String getDate() {
-//        return Date;
-//    }
-//
-//    public void setDate(String date) {
-//        this.Date = date;
-//    }
-//
-//    public String getLocation() {
-//        return Location;
-//    }
-//
-//    public void setLocation(String location) {
-//        this.Location = location;
-//    }
-//
-//    public String getTime() {
-//        return Time;
-//    }
-//
-//    public void setTime(String time) {
-//        this.Time = time;
-//    }
-//
-//    public String getViolationOrAccident() {
-//        return ViolationOrAccident;
-//    }
-//
-//    public void setViolationOrAccident(String violationOrAccident) {
-//        this.ViolationOrAccident = violationOrAccident;
-//    }
-//
-//    public Users(String date, String location, String time, String violationOrAccident) {
-//        this.Date = date;
-//        this.Location = location;
-//        this.Time = time;
-//        this.ViolationOrAccident = violationOrAccident;
-//    }
-
 
 
 }

@@ -43,10 +43,14 @@ public class ViolationFragment extends Fragment{
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     FirebaseUser firebaseUser;
-    ArrayList<String> licenceDetailsList;
+
     ArrayList<String> dateList;
     ArrayList<String> timeList;
     ArrayList<String> violOrAccList;
+    ArrayList<String> faultList;
+    ArrayList<String> licenceDetailsList;
+    ArrayList<String> numplateList;
+    ArrayList<String> locationList;
     Users users;
 
 
@@ -71,10 +75,14 @@ public class ViolationFragment extends Fragment{
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
 
-        licenceDetailsList = new ArrayList<>();
         dateList = new ArrayList<>();
         timeList = new ArrayList<>();
         violOrAccList = new ArrayList<>();
+        faultList = new ArrayList<>();
+        licenceDetailsList = new ArrayList<>();
+        numplateList = new ArrayList<>();
+        locationList = new ArrayList<>();
+
 
         search_edit_text.addTextChangedListener(new TextWatcher() {
             @Override
@@ -94,10 +102,13 @@ public class ViolationFragment extends Fragment{
                     setAdapter(s.toString());
                 }else {
 
-                    violOrAccList.clear();
                     dateList.clear();
                     timeList.clear();
+                    violOrAccList.clear();
+                    faultList.clear();
                     licenceDetailsList.clear();
+                    numplateList.clear();
+                    locationList.clear();
                     recyclerView.removeAllViews();
                 }
 
@@ -109,66 +120,61 @@ public class ViolationFragment extends Fragment{
 
     private void setAdapter(final String searchedString) {
 
-        Log.e("log","top 1");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                violOrAccList.clear();
                 dateList.clear();
                 timeList.clear();
+                violOrAccList.clear();
+                faultList.clear();
                 licenceDetailsList.clear();
+                numplateList.clear();
+                locationList.clear();
                 recyclerView.removeAllViews();
 
-                Log.e("log","top 2");
 
                 int counter = 0;
 
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
 
-                    //String uid = snapshot.getKey();
-                    String LicenceDetails = snapshot.child("LicenceDetails").getValue(String.class);
+
+                    String uid = snapshot.getKey();
+
                     String Date = snapshot.child("Date").getValue(String.class);
                     String Time = snapshot.child("Time").getValue(String.class);
                     String ViolationOrAccident = snapshot.child("ViolationOrAccident").getValue(String.class);
+                    String Fault = snapshot.child("Fault").getValue(String.class);
+                    String LicenceDetails = snapshot.child("LicenceDetails").getValue(String.class);
+                    String NumberPlate = snapshot.child("NumberPlate").getValue(String.class);
+                    String Location = snapshot.child("Location").getValue(String.class);
 
-                    Log.e("log","top");
 
-                  // if (LicenceDetails.toLowerCase().contains(searchedString)) {
-                       Log.e("log", "success");
-                       licenceDetailsList.add(LicenceDetails);
+                   if (LicenceDetails.toLowerCase().contains(searchedString)) {
+
                        dateList.add(Date);
                        timeList.add(Time);
                        violOrAccList.add(ViolationOrAccident);
-                       counter++;
-
-
-/*
-                   }else if (Date.toLowerCase().contains(searchedString)){
-
-
-//
-
-
-
-
+                       faultList.add(Fault);
                        licenceDetailsList.add(LicenceDetails);
-                        dateList.add(Date);
-                        timeList.add(Time);
-                        violOrAccList.add(ViolationOrAccident);
+                       numplateList.add(NumberPlate);
+                       locationList.add(Location);
+
                        counter++;
 
-                   }
 
-*/
+
+
+                    }
+
                     if (counter == 20){
                         break;
                     }
 
                 }
 
-                users = new Users(getActivity(),violOrAccList,dateList,timeList,licenceDetailsList);
+                users = new Users(getActivity(),dateList,timeList,violOrAccList,faultList,licenceDetailsList,numplateList,locationList);
                 recyclerView.setAdapter(users);
 
 
@@ -183,132 +189,6 @@ public class ViolationFragment extends Fragment{
 
     }
 
-    //    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//
-//       final View violView = inflater.inflate(R.layout.fragment_violation,container,false);
 
-//        mSearchField = (EditText) violView.findViewById(R.id.search_field);
-//        mSearchBtn = (ImageButton) violView.findViewById(R.id.searchBtn);
-//
-//        mResultList = (RecyclerView) violView.findViewById(R.id.result_list);
-//        mResultList.setHasFixedSize(true);
-//        mResultList.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        mUserDatabase = FirebaseDatabase.getInstance().getReference("Violator");
-//
-//        mSearchBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                String searchText = mSearchField.getText().toString();
-//
-//               firebaseUsersSearch(searchText);
-//
-//            }
-//        });
-//
-//        return violView;
-//    }
-//
-//    private void firebaseUsersSearch(String searchText) {
-//
-//        Toast.makeText(getContext(),"Started Search",Toast.LENGTH_LONG).show();;
-//
-//        Query firebaseSearchQuery = mUserDatabase.orderByChild("Time").startAt(searchText).endAt(searchText +"\uf8ff");
-//
-//        FirebaseRecyclerOptions<Users> options = new FirebaseRecyclerOptions.Builder<Users>()
-//                .setQuery(firebaseSearchQuery, Users.class)
-//                .build();
-//
-//        final FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(options) {
-//            @Override
-//            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
-//
-//                holder.setDetails(model.getTime(),model.getViolationOrAccident(),model.getDate(),model.getLocation());
-//
-//            }
-//
-//
-//            @NonNull
-//            @Override
-//            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-//
-//                View v = LayoutInflater.from(viewGroup.getContext())
-//                        .inflate(R.layout.list_layout,viewGroup,false);
-//
-//
-//                return new UsersViewHolder(v);
-//
-//            }
-//
-//
-//
-//        };
-//
-//
-////        FirebaseRecyclerAdapter<Users,UsersViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Users, UsersViewHolder>(
-////
-////             Users.class,
-////             R.layout.list_layout,
-////             UsersViewHolder.class,
-////             firebaseSearchQuery
-////
-////        ) {
-////            @Override
-////            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull Users model) {
-////
-////                holder.setDetails(model.getTime(),model.getViolationOrAccident(),model.getDate(),model.getLocation());
-////
-////            }
-////
-////            @NonNull
-////            @Override
-////            public UsersViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-////                return null;
-////            }
-////        };
-//
-
-
-//        mResultList.setAdapter(firebaseRecyclerAdapter);
-
-//    }
-
-
-
-
-//    //view holder class
-//
-//    public static class UsersViewHolder extends RecyclerView.ViewHolder{
-//
-//        View mview;
-//
-//        public UsersViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//
-//            mview = itemView;
-//
-//        }
-//
-//        public void setDetails(String userTime,String userViolAcc, String userDate,String userLocation){
-//
-//            TextView user_time = (TextView) mview.findViewById(R.id.Vtime);
-//            TextView user_violAcc = (TextView) mview.findViewById(R.id.accident_violation);
-//            TextView user_date = (TextView) mview.findViewById(R.id.Vdate);
-//            TextView user_location = (TextView) mview.findViewById(R.id.VlocationText);
-//
-//            user_time.setText(userTime);
-//            user_violAcc.setText(userViolAcc);
-//            user_date.setText(userDate);
-//            user_location.setText(userLocation);
-//
-//
-//        }
-//
-//
-//
-//    }
 
 }
