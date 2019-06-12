@@ -18,7 +18,7 @@
     </string-array>
 
     <string-array name="item_div_class_1">
-        <item></item>
+        <item>Select Violation</item>
         <item>Driving uninsured vehicle</item>
         <item>Failure to display a driving license</item>
         <item>Failure to signal</item>
@@ -31,7 +31,7 @@
     </string-array>
 
     <string-array name="items_div_class_2">
-        <item></item>
+        <item>Select Accident</item>
         <item>Recklessness of the driver</item>
         <item>Negligent of the driver</item>
         <item>Indiscipline driving</item>
