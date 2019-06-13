@@ -57,6 +57,8 @@
                 android:layout_height="36dp"
                 app:srcCompat="@drawable/ic_email_black_24dp"/>
 
+
+
             <TextView
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
@@ -90,7 +92,6 @@
 
     </LinearLayout>
 
+    </LinearLayout>
 
 
-
-</LinearLayout>
