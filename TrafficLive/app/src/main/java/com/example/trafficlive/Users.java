@@ -3,6 +3,7 @@ package com.example.trafficlive;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,12 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
     ArrayList<String> licenceDetailsList;
     ArrayList<String> numplateList;
     ArrayList<String> locationList;
+    ArrayList<String> descriptionList;
 
 
     class SearchViewHolder extends RecyclerView.ViewHolder {
 
-        TextView Date,Time,ViolationOrAccident,Fault,LicenceDetails,NumberPlate,Location;
+        TextView Date,Time,ViolationOrAccident,Fault,LicenceDetails,NumberPlate,Location,Description;
 
 
         public SearchViewHolder(@NonNull View itemView) {
@@ -39,12 +41,14 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
             LicenceDetails = (TextView) itemView.findViewById(R.id.VLicenceDetails);
             NumberPlate = (TextView) itemView.findViewById(R.id.Vnumberplate);
             Location = (TextView) itemView.findViewById(R.id.Vlocation);
+            Description= (TextView) itemView.findViewById(R.id.Vdescription);
+
 
         }
 
     }
 
-    public Users(Context context,  ArrayList<String> dateList, ArrayList<String> timeList, ArrayList<String> violOrAccList, ArrayList<String> faultList,ArrayList<String> licenceDetailsList, ArrayList<String> numplateList, ArrayList<String> locationList) {
+    public Users(Context context,  ArrayList<String> dateList, ArrayList<String> timeList, ArrayList<String> violOrAccList, ArrayList<String> faultList,ArrayList<String> licenceDetailsList, ArrayList<String> numplateList, ArrayList<String> locationList,ArrayList<String> descriptionList) {
         this.context = context;
 
         this.dateList = dateList;
@@ -54,6 +58,7 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
         this.licenceDetailsList = licenceDetailsList;
         this.numplateList=numplateList;
         this.locationList=locationList;
+        this.descriptionList=descriptionList;
     }
 
 
@@ -77,6 +82,8 @@ public class Users extends RecyclerView.Adapter<Users.SearchViewHolder> {
         searchViewHolder.LicenceDetails.setText(licenceDetailsList.get(i));
         searchViewHolder.NumberPlate.setText(numplateList.get(i));
         searchViewHolder.Location.setText(locationList.get(i));
+        searchViewHolder.Description.setText(descriptionList.get(i));
+
     }
 
     @Override

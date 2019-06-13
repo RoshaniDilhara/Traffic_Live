@@ -27,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +78,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     private TextView mLocation;
     private TextView mDate;
     private TextView mTime;
+    private EditText mDescription;
     private Button mSubmitBtn;
     private Spinner mspinner;
     private Spinner mspinner1;
@@ -142,6 +144,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         mLocation = (TextView) view.findViewById(R.id.locationText);
         mDate = (TextView) view.findViewById(R.id.date);
         mTime = (TextView) view.findViewById(R.id.timer);
+        mDescription= (EditText) view.findViewById(R.id.editText2);
         mspinner = (Spinner) view.findViewById(R.id.spinner);
 
         mSubmitBtn = (Button) view.findViewById(R.id.submit);
@@ -310,7 +313,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
             public void onClick(View v) {
                 Calendar calendar2 = Calendar.getInstance();
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-                String time = "Current Time:"+ format.format(calendar2.getTime());
+                String time = "Time" + format.format(calendar2.getTime());
                 TextView timeView = (TextView) view.findViewById(R.id.timer);
                 timeView.setText(time);
             }
@@ -377,6 +380,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         final String LocationVal = mLocation.getText().toString().trim();
         final String DateVal = mDate.getText().toString().trim();
         final String TimeVal = mTime.getText().toString().trim();
+        final String DescriptionVal = mDescription.getText().toString().trim();
+
         final String SpinnerVal = mspinner.getSelectedItem().toString().trim();
         final String SpinnerVal1 = mspinner1.getSelectedItem().toString().trim();
 
@@ -391,46 +396,16 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
         newPost.child("Location").setValue(LocationVal);
         newPost.child("Date").setValue(DateVal);
         newPost.child("Time").setValue(TimeVal);
+        newPost.child("Description").setValue(DescriptionVal);
         newPost.child("ViolationOrAccident").setValue(SpinnerVal);
         newPost.child("Fault").setValue(SpinnerVal1);
 
 
-//        mDatabaseUser.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//                newPost.child("LicenceDetails").setValue(LicenceDetVal);
-//                newPost.child("NumberPlate").setValue(NumPlateVal);
-//                newPost.child("Location").setValue(LocationVal);
-//                newPost.child("Date").setValue(DateVal);
-//                newPost.child("Time").setValue(TimeVal);
-//                newPost.child("ViolationOrAccident").setValue(SpinnerVal);
-//                newPost.child("UId").setValue(mCurrentUser.getUid());
-//                newPost.child("UserName").setValue(dataSnapshot.child("Name").getValue());
-//                newPost.child("UserEmail").setValue(dataSnapshot.child("E-mail").getValue());
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
 
-
-
-
-        //  }
 
     }
 
 
-
-    //    private ActionBar getSupportActionBar() {
-//    }
-
-//    private void setContentView(int fragment_data_entry) {
-//    }
 
     private void getLocation() {
         try {
@@ -448,13 +423,13 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     @Override
     public void onLocationChanged(Location location) {
 
-        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+//        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            locationText.setText(locationText.getText() + "\n"+addresses.get(0).getAddressLine(0)+", "+
-                    addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
+            locationText.setText(addresses.get(0).getAddressLine(0)+", "+
+                    addresses.get(0).getAddressLine(1));
         }catch(Exception e)
         {
 
@@ -497,12 +472,6 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
 
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//
-//        mAuth.addAuthStateListener(mAuthListener);
-//    }
 
 
 

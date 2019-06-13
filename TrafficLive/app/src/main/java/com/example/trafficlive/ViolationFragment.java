@@ -51,6 +51,7 @@ public class ViolationFragment extends Fragment{
     ArrayList<String> licenceDetailsList;
     ArrayList<String> numplateList;
     ArrayList<String> locationList;
+    ArrayList<String> descriptionList;
     Users users;
 
 
@@ -82,6 +83,7 @@ public class ViolationFragment extends Fragment{
         licenceDetailsList = new ArrayList<>();
         numplateList = new ArrayList<>();
         locationList = new ArrayList<>();
+        descriptionList = new ArrayList<>();
 
 
         search_edit_text.addTextChangedListener(new TextWatcher() {
@@ -109,6 +111,7 @@ public class ViolationFragment extends Fragment{
                     licenceDetailsList.clear();
                     numplateList.clear();
                     locationList.clear();
+                    descriptionList.clear();
                     recyclerView.removeAllViews();
                 }
 
@@ -132,6 +135,7 @@ public class ViolationFragment extends Fragment{
                 licenceDetailsList.clear();
                 numplateList.clear();
                 locationList.clear();
+                descriptionList.clear();
                 recyclerView.removeAllViews();
 
 
@@ -149,6 +153,12 @@ public class ViolationFragment extends Fragment{
                     String LicenceDetails = snapshot.child("LicenceDetails").getValue(String.class);
                     String NumberPlate = snapshot.child("NumberPlate").getValue(String.class);
                     String Location = snapshot.child("Location").getValue(String.class);
+                    String Description = snapshot.child("Description").getValue(String.class);
+
+
+
+
+                          Log.e("log","success");
 
 
                    if (LicenceDetails.toLowerCase().contains(searchedString)) {
@@ -160,13 +170,21 @@ public class ViolationFragment extends Fragment{
                        licenceDetailsList.add(LicenceDetails);
                        numplateList.add(NumberPlate);
                        locationList.add(Location);
+                       descriptionList.add(Description);
 
                        counter++;
 
+//                        licenceDetailsList.add(LicenceDetails);
+//                        dateList.add(Date);
+//                        timeList.add(Time);
+//                        violOrAccList.add(ViolationOrAccident);
+//                        counter++;
 
+//                    }
 
 
                     }
+
 
                     if (counter == 20){
                         break;
@@ -174,7 +192,7 @@ public class ViolationFragment extends Fragment{
 
                 }
 
-                users = new Users(getActivity(),dateList,timeList,violOrAccList,faultList,licenceDetailsList,numplateList,locationList);
+                users = new Users(getActivity(),dateList,timeList,violOrAccList,faultList,licenceDetailsList,numplateList,locationList,descriptionList);
                 recyclerView.setAdapter(users);
 
 
