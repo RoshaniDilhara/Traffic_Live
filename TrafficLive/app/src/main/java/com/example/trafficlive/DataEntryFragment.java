@@ -307,7 +307,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
             public void onClick(View v) {
                 Calendar calendar2 = Calendar.getInstance();
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-                String time = "Current Time:"+ format.format(calendar2.getTime());
+                String time = format.format(calendar2.getTime());
                 TextView timeView = (TextView) view.findViewById(R.id.timer);
                 timeView.setText(time);
             }
@@ -445,13 +445,13 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     @Override
     public void onLocationChanged(Location location) {
 
-        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+//        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            locationText.setText(locationText.getText() + "\n"+addresses.get(0).getAddressLine(0)+", "+
-                    addresses.get(0).getAddressLine(1)+", "+addresses.get(0).getAddressLine(2));
+            locationText.setText(addresses.get(0).getAddressLine(0)+", "+
+                    addresses.get(0).getAddressLine(1));
         }catch(Exception e)
         {
 
