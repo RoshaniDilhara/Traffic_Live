@@ -151,15 +151,10 @@ public class ViolationFragment extends Fragment{
                     String Location = snapshot.child("Location").getValue(String.class);
 
 
-<<<<<<< HEAD
-//                   if (LicenceDetails.toLowerCase().contains(searchedString)){
-                           Log.e("log","success");
-                        licenceDetailsList.add(LicenceDetails);
-                        dateList.add(Date);
-                        timeList.add(Time);
-                        violOrAccList.add(ViolationOrAccident);
-                        counter++;
-=======
+
+                          Log.e("log","success");
+
+
                    if (LicenceDetails.toLowerCase().contains(searchedString)) {
 
                        dateList.add(Date);
@@ -171,11 +166,7 @@ public class ViolationFragment extends Fragment{
                        locationList.add(Location);
 
                        counter++;
->>>>>>> e89e5bbd6b0c4af129e3542bfa70f04bcdb4c202
 
-
-
-<<<<<<< HEAD
 //                        licenceDetailsList.add(LicenceDetails);
 //                        dateList.add(Date);
 //                        timeList.add(Time);
@@ -183,10 +174,10 @@ public class ViolationFragment extends Fragment{
 //                        counter++;
 
 //                    }
-=======
+
 
                     }
->>>>>>> e89e5bbd6b0c4af129e3542bfa70f04bcdb4c202
+
 
                     if (counter == 20){
                         break;

@@ -310,7 +310,7 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
             public void onClick(View v) {
                 Calendar calendar2 = Calendar.getInstance();
                 SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-                String time = format.format(calendar2.getTime());
+                String time = "Time" + format.format(calendar2.getTime());
                 TextView timeView = (TextView) view.findViewById(R.id.timer);
                 timeView.setText(time);
             }
