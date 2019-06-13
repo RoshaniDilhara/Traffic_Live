@@ -18,9 +18,7 @@
         android:layout_marginBottom="198dp"
         android:background="@drawable/reg_btn_style"
         android:text="Start Reporting Violation"
-        android:textColor="#fff"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="237dp" />
+        android:textColor="#fff" />
 
 
     <Button

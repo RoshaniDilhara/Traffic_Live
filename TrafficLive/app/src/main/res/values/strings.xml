@@ -4,7 +4,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2">TrafficLive</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -18,17 +18,28 @@
     </string-array>
 
     <string-array name="item_div_class_1">
-        <item>Violate1</item>
-        <item>Violate2</item>
-        <item>Violate3</item>
-        <item>Violate4</item>
+        <item>Select Violation</item>
+        <item>Driving uninsured vehicle</item>
+        <item>Failure to display a driving license</item>
+        <item>Failure to signal</item>
+        <item>Following too closely</item>
+        <item>Failure to have vehicle under controll</item>
+        <item>Parking violation</item>
+        <item>Racing,dragging or contest for speed</item>
+        <item>Speeding</item>
+        <item>Failure to stop or yield to pedestrian</item>
     </string-array>
 
     <string-array name="items_div_class_2">
-        <item>Accident1</item>
-        <item>Accident2</item>
-        <item>Accident3</item>
-        <item>Accident4</item>
+        <item>Select Accident</item>
+        <item>Recklessness of the driver</item>
+        <item>Negligent of the driver</item>
+        <item>Indiscipline driving</item>
+        <item>Duty poor helth condition</item>
+        <item>Not wearing the safety belt</item>
+        <item>Not keeping the proper distance</item>
+        <item>Pedestrians not following road rules</item>
+        <item>Failure in respecting the rights of others</item>
     </string-array>
 
 

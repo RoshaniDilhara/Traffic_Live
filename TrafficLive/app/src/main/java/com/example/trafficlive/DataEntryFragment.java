@@ -4,6 +4,7 @@ package com.example.trafficlive;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -59,6 +60,8 @@ public class DataEntryFragment extends Fragment implements LocationListener, Ada
     //SharedPreferences sharedpreferences;
     private Button getLocation;
     private TextView locationText;
+
+    private ProgressDialog progressDialog;
 
     LocationManager locationManager;
 
